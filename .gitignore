@@ -1,0 +1,5 @@
+.DS_Store
+data/raw/
+data/interim/
+data/processed/
+*.numbers
