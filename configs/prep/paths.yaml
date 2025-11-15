@@ -1,0 +1,30 @@
+root: data/raw
+
+cmp:
+  rnaseq_tpm:
+    file: rnaseq_merged_rsem_tpm_20250922.csv
+    version: rnaseq_merged_rsem_tpm_20250922
+  cnv_summary:
+    file: cnv_summary_20250207.csv
+    version: cnv_summary_20250207
+  mutations_summary:
+    file: mutations_summary_20250318.csv
+    version: mutations_summary_20250318
+
+gdsc:
+  dose_response:
+    file: GDSC2_fitted_dose_response_27Oct23.xlsx
+    version: GDSC2_27Oct2023
+
+geo_gse68379:
+  processed_matrix:
+    file: GSE68379_Matrix.processed.txt
+    version: GSE68379_processed
+  series_matrix:
+    file: GSE68379_series_matrix.txt
+    version: GSE68379_series
+
+manifests:
+  hm450k_manifest:
+    file: GPL13534-11288.txt
+    version: GPL13534_11288

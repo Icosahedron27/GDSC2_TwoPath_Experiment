@@ -3,3 +3,6 @@ data/raw/
 data/interim/
 data/processed/
 *.numbers
+.snakemake/
+scripts/__pycache__
+src/bachelorarbeit/prep/__pycache__

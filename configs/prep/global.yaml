@@ -1,0 +1,11 @@
+run_tag: v1-union-na20
+threads: 8
+dtype: float32
+seeds:
+  global: 1234
+  subsampling: 4321
+log_level: INFO     # | DEBUG
+target: ln_ic50
+per_drug_qc:
+  max_na_frac: 0.2  # Features dropped if >20% NAs
+  drop_near_zero_var: true

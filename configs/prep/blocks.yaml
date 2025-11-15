@@ -1,0 +1,19 @@
+mutation_weights:
+  3prime_UTR_variant: 1
+  5prime_UTR_variant: 1
+  ess_splice: 100
+  frameshift: 100
+  inframe: 10
+  missense: 5
+  nonsense: 100
+  start_lost: 10
+  stop_lost: 10
+  else: 0
+
+interestedRefgeneGroups:
+  - TSS1500
+  - TSS200
+
+tpm_filter:
+  min_tpm: 1.0
+  min_fraction: 0.2
