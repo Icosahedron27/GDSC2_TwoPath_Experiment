@@ -127,6 +127,9 @@ def design_outputs(wildcards):
         "data/processed/{drug}/{run_id}/design_matrix/manifest.json",
         "data/processed/{drug}/{run_id}/design_matrix/sidecars/cells.txt.gz",
         "data/processed/{drug}/{run_id}/design_matrix/sidecars/genes.txt.gz",
+        "data/processed/{drug}/{run_id}/design_matrix/X_zScoreNormalized.parquet",
+        "data/processed/{drug}/{run_id}/design_matrix/X_linear_sis_reduced.parquet",
+        "data/processed/{drug}/{run_id}/design_matrix/X_general_sis_reduced.parquet",
     ]
     return expand(templates, drug=drugs, run_id=RUN_ID)
 
@@ -164,3 +167,30 @@ rule build_design_matrix:
             "rm -rf 'data/processed/{wildcards.drug}/{wildcards.run_id}/design_matrix' "
             "&& python3 scripts/build_design_matrix.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}'"
         )
+
+rule z_score_normalize:
+    input:
+        X="data/processed/{drug}/{run_id}/design_matrix/X.parquet",
+        meta="data/processed/{drug}/{run_id}/design_matrix/feature_meta.parquet"
+    output:
+        X_norm="data/processed/{drug}/{run_id}/design_matrix/X_zScoreNormalized.parquet"
+    shell:
+        "python3 scripts/zscore_normalizer.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}'"
+
+rule sis_linear:
+    input:
+        X_norm="data/processed/{drug}/{run_id}/design_matrix/X_zScoreNormalized.parquet",
+        y="data/processed/{drug}/{run_id}/design_matrix/y.parquet"
+    output:
+        X_reduced="data/processed/{drug}/{run_id}/design_matrix/X_linear_sis_reduced.parquet"
+    shell:
+        "python3 scripts/sis.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}' linear"
+
+rule sis_general:
+    input:
+        X_norm="data/processed/{drug}/{run_id}/design_matrix/X_zScoreNormalized.parquet",
+        y="data/processed/{drug}/{run_id}/design_matrix/y.parquet"
+    output:
+        X_reduced="data/processed/{drug}/{run_id}/design_matrix/X_general_sis_reduced.parquet"
+    shell:
+        "python3 scripts/sis.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}' general"

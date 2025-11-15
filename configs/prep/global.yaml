@@ -9,3 +9,5 @@ target: ln_ic50
 per_drug_qc:
   max_na_frac: 0.2  # Features dropped if >20% NAs
   drop_near_zero_var: true
+sis:
+  alpha: 4.0
