@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score
+TPM__TFF3,10,5,1.0
+TPM__VWA8,10,5,1.0
+MUT__EGFR,10,5,1.0
+TPM__SLC7A5,9,4,0.9
+TPM__VAV3,9,4,0.9

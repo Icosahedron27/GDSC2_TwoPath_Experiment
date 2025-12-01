@@ -1,0 +1,171 @@
+
+==========================================================================================
+LINEAR CPSS TEST: Paper-conform ElasticNet implementation
+==========================================================================================
+
+Changes from old implementation:
+  1. q is FIXED (not adaptive)
+  2. λ is tuned to achieve |Ŝ| ≈ q on EACH subsample
+  3. NO invalid unimodality tests
+  4. Only worst-case bound (always valid)
+==========================================================================================
+DRUG: Erlotinib (Linear CPSS, paper-conform)
+==========================================================================================
+
+Expected biomarkers (7):
+  - MUT__EGFR: EGFR mutations (primary target)
+  - CNV__EGFR: EGFR amplification
+  - TPM__EGFR: EGFR expression
+  - MUT__KRAS: KRAS resistance
+  - MUT__BRAF: BRAF resistance
+  - TPM__MET: MET bypass
+  - CNV__MET: MET amplification
+
+Data: n=821, d=489, l=24, q=96
+
+Running paper-conform Linear CPSS with B=10 pairs...
+Running CPSS with B=10 pairs, target q=96, method=elasticnet
+  Pair 1/10... A1:95 A2:92
+  Pair 2/10... A1:96 A2:99
+  Pair 3/10... A1:96 A2:95
+  Pair 4/10... A1:94 A2:96
+  Pair 5/10... A1:99 A2:97
+  Pair 6/10... A1:99 A2:97
+  Pair 7/10... A1:92 A2:101
+  Pair 8/10... A1:96 A2:96
+  Pair 9/10... A1:93 A2:95
+  Pair 10/10... A1:96 A2:96
+Observed q̂ = 96.0 (target was q=96)
+
+Results:
+  q̂ = 96.0 (target: 96)
+  θ = 0.1963
+  τ* (worst-case) = 0.893
+  Features passing τ*: 4
+
+------------------------------------------------------------------------------------------
+Top 15 Features:
+------------------------------------------------------------------------------------------
+  TPM__VWA8                                Π̂=1.000
+  TPM__TFF3                                Π̂=0.950
+  TPM__VAV3                                Π̂=0.950
+✓ MUT__EGFR                                Π̂=0.900
+  TPM__KLF9                                Π̂=0.850
+  TPM__ADGRF4                              Π̂=0.850
+  TPM__STK32A                              Π̂=0.800
+  TPM__DYNLT3                              Π̂=0.800
+  TPM__ARMCX2                              Π̂=0.750
+  TPM__PLXND1                              Π̂=0.750
+  TPM__SLC7A5                              Π̂=0.750
+  TPM__CNRIP1                              Π̂=0.750
+  METH__LHFPL2                             Π̂=0.700
+  TPM__FAM50A                              Π̂=0.700
+  TPM__APBB1                               Π̂=0.700
+
+------------------------------------------------------------------------------------------
+Biomarker Validation:
+------------------------------------------------------------------------------------------
+✓✓ MUT__EGFR            Rank 348, Π̂=0.900 - EGFR mutations (primary target)
+✗  CNV__EGFR            NOT FOUND - EGFR amplification
+✗  TPM__EGFR            NOT FOUND - EGFR expression
+✗  MUT__KRAS            NOT FOUND - KRAS resistance
+✗  MUT__BRAF            NOT FOUND - BRAF resistance
+✗  TPM__MET             NOT FOUND - MET bypass
+✗  CNV__MET             NOT FOUND - MET amplification
+
+Strong (Π̂≥0.5): 1/7
+Weak (Π̂≥0.1): 0/7
+Total: 1/7 (14.3%)
+
+
+==========================================================================================
+DRUG: Cisplatin (Linear CPSS, paper-conform)
+==========================================================================================
+
+Expected biomarkers (8):
+  - MUT__TP53: TP53 (apoptosis)
+  - MUT__ERCC1: ERCC1 (NER)
+  - MUT__ERCC2: ERCC2 (NER helicase)
+  - MUT__MSH2: MSH2 (MMR)
+  - MUT__MLH1: MLH1 (MMR)
+  - MUT__BRCA1: BRCA1 (HR)
+  - MUT__BRCA2: BRCA2 (HR)
+  - MUT__KRAS: KRAS (resistance)
+
+Data: n=667, d=410, l=20, q=80
+
+Running paper-conform Linear CPSS with B=10 pairs...
+Running CPSS with B=10 pairs, target q=80, method=elasticnet
+  Pair 1/10... A1:80 A2:77
+  Pair 2/10... A1:83 A2:79
+  Pair 3/10... A1:80 A2:78
+  Pair 4/10... A1:79 A2:79
+  Pair 5/10... A1:78 A2:78
+  Pair 6/10... A1:78 A2:78
+  Pair 7/10... A1:81 A2:81
+  Pair 8/10... A1:82 A2:79
+  Pair 9/10... A1:77 A2:77
+  Pair 10/10... A1:78 A2:81
+Observed q̂ = 79.2 (target was q=80)
+
+Results:
+  q̂ = 79.2 (target: 80)
+  θ = 0.1930
+  τ* (worst-case) = 0.882
+  Features passing τ*: 7
+
+------------------------------------------------------------------------------------------
+Top 15 Features:
+------------------------------------------------------------------------------------------
+  TPM__SLFN11                              Π̂=1.000
+  TPM__BMP4                                Π̂=1.000
+  TPM__APLP2                               Π̂=0.950
+  TPM__CUEDC1                              Π̂=0.950
+  TPM__SLC38A5                             Π̂=0.950
+  TPM__RPL10A                              Π̂=0.900
+  TPM__PDCD6IP-DT                          Π̂=0.900
+  TPM__SQSTM1                              Π̂=0.850
+  TPM__MOB3A                               Π̂=0.850
+  TPM__LINC01410                           Π̂=0.850
+  TPM__ATF5                                Π̂=0.800
+  TPM__TPD52L1                             Π̂=0.800
+  TPM__PKP3                                Π̂=0.800
+  TPM__ZBED4                               Π̂=0.750
+  TPM__TMEM191A                            Π̂=0.750
+
+------------------------------------------------------------------------------------------
+Biomarker Validation:
+------------------------------------------------------------------------------------------
+✗  MUT__TP53            NOT FOUND - TP53 (apoptosis)
+✗  MUT__ERCC1           NOT FOUND - ERCC1 (NER)
+✗  MUT__ERCC2           NOT FOUND - ERCC2 (NER helicase)
+✗  MUT__MSH2            NOT FOUND - MSH2 (MMR)
+✗  MUT__MLH1            NOT FOUND - MLH1 (MMR)
+✗  MUT__BRCA1           NOT FOUND - BRCA1 (HR)
+✗  MUT__BRCA2           NOT FOUND - BRCA2 (HR)
+✗  MUT__KRAS            NOT FOUND - KRAS (resistance)
+
+Strong (Π̂≥0.5): 0/8
+Weak (Π̂≥0.1): 0/8
+Total: 0/8 (0.0%)
+
+
+==========================================================================================
+DRUG: Dabrafenib (Linear CPSS, paper-conform)
+==========================================================================================
+
+Expected biomarkers (4):
+  - MUT__BRAF: BRAF V600E (primary target)
+  - MUT__NRAS: NRAS (MAPK pathway)
+  - MUT__KRAS: KRAS (MAPK pathway)
+  - TPM__BRAF: BRAF expression
+
+Data: n=822, d=489, l=24, q=96
+
+Running paper-conform Linear CPSS with B=10 pairs...
+Running CPSS with B=10 pairs, target q=96, method=elasticnet
+  Pair 1/10... A1:97 A2:92
+  Pair 2/10... A1:99 A2:94
+  Pair 3/10... A1:92 A2:95
+  Pair 4/10... A1:96 A2:96
+  Pair 5/10...

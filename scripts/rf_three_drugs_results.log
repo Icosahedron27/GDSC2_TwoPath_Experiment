@@ -1,0 +1,189 @@
+==========================================================================================
+MEDIKAMENT 1: Erlotinib (EGFR Tyrosine Kinase Inhibitor)
+==========================================================================================
+
+Erwartete Biomarker:
+  Primary: MUT__EGFR (aktivierende Mutationen → Sensitivität)
+  Secondary: CNV__EGFR, TPM__EGFR (Amplifikation/Expression)
+  Resistance: MUT__KRAS, MUT__BRAF (downstream activation)
+  Bypass: TPM__MET, CNV__MET (alternative signaling)
+
+Testing unimodality for all features...
+
+Generating 200 complementary pairs...
+
+Running CPSS with B=200 pairs...
+  Using q_rf=19 (reduced from q=96 to satisfy θ ≤ 1/√3)
+
+CPSS Results:
+  Features (d): 489
+  Target q: 96
+  Observed q̂: 19.0
+  θ (q̂/d): 0.0389
+  Worst-case τ*: 0.515
+  Features passing worst-case: 7
+  Features passing unimodal: 0
+
+------------------------------------------------------------------------------------------
+Top 15 Features:
+------------------------------------------------------------------------------------------
+  336. METH__STRAP                         Score=0.998
+  98. METH__MPHOSPH9                      Score=0.897
+  457. METH__FASN                          Score=0.805
+  418. METH__RASA2                         Score=0.700
+  67. METH__GPR108                        Score=0.667
+  282. CNV__CCDC6                          Score=0.595
+  219. CNV__PAX3                           Score=0.520
+  343. MUT__NFE2L2                         Score=0.482
+  118. CNV__NCOA4                          Score=0.465
+  261. MUT__NOTCH1                         Score=0.455
+  223. CNV__KAT6B                          Score=0.425
+  347. CNV__MPL                            Score=0.422
+  198. METH__FOXO3                         Score=0.405
+  290. CNV__FLI1                           Score=0.395
+  489. MUT__NRAS                           Score=0.390
+
+------------------------------------------------------------------------------------------
+Biomarker Validierung:
+------------------------------------------------------------------------------------------
+✗  MUT__EGFR            NOT FOUND - EGFR mutations (primary)
+✗  CNV__EGFR            NOT FOUND - EGFR amplification
+✗  TPM__EGFR            NOT FOUND - EGFR expression
+✗  MUT__KRAS            NOT FOUND - KRAS resistance
+✗  MUT__BRAF            NOT FOUND - BRAF resistance
+✗  TPM__MET             NOT FOUND - MET bypass
+✗  CNV__MET             NOT FOUND - MET amplification
+
+Stark gefunden: 0/7
+
+
+
+==========================================================================================
+MEDIKAMENT 2: Cisplatin (DNA Cross-Linking Agent)
+==========================================================================================
+
+Erwartete Biomarker:
+  DNA Repair: MUT__TP53, MUT__ERCC1, MUT__ERCC2 (NER pathway)
+  MMR: MUT__MSH2, MUT__MLH1 (Mismatch repair)
+  HR: MUT__BRCA1, MUT__BRCA2 (Homologous recombination)
+  Resistance: MUT__KRAS
+
+Testing unimodality for all features...
+
+Generating 200 complementary pairs...
+
+Running CPSS with B=200 pairs...
+  Using q_rf=16 (reduced from q=80 to satisfy θ ≤ 1/√3)
+
+CPSS Results:
+  Features (d): 410
+  Target q: 80
+  Observed q̂: 16.0
+  θ (q̂/d): 0.0390
+  Worst-case τ*: 0.516
+  Features passing worst-case: 16
+  Features passing unimodal: 2
+
+------------------------------------------------------------------------------------------
+Top 15 Features:
+------------------------------------------------------------------------------------------
+  128. TPM__PDE1B                          Score=1.000
+  288. CNV__NFATC2                         Score=1.000
+  17. TPM__IKZF1                          Score=1.000
+   8. METH__DSTN                          Score=1.000
+  16. TPM__TM4SF1-AS1                     Score=1.000
+  316. CNV__ZNF780A                        Score=0.965
+  367. CNV__KAT6B                          Score=0.963
+✓ 166. MUT__KRAS                           Score=0.912
+  388. CNV__TET1                           Score=0.802
+  116. CNV__TCF7L2                         Score=0.780
+  121. MUT__STAG2                          Score=0.677
+  383. CNV__RAP1GDS1                       Score=0.625
+  42. CNV__SUFU                           Score=0.608
+  238. CNV__FAS                            Score=0.568
+  83. CNV__PRF1                           Score=0.565
+
+------------------------------------------------------------------------------------------
+Biomarker Validierung:
+------------------------------------------------------------------------------------------
+✗  MUT__TP53            NOT FOUND - TP53 (apoptosis)
+✗  MUT__ERCC1           NOT FOUND - ERCC1 (NER)
+~  MUT__ERCC2           Rank 158, Score 0.000 - ERCC2 (NER helicase) (zu schwach)
+✗  MUT__MSH2            NOT FOUND - MSH2 (MMR)
+~  MUT__MLH1            Rank  88, Score 0.003 - MLH1 (MMR) (zu schwach)
+✗  MUT__BRCA1           NOT FOUND - BRCA1 (HR)
+~  MUT__BRCA2           Rank 402, Score 0.000 - BRCA2 (HR) (zu schwach)
+✓✓ MUT__KRAS            Rank 166, Score 0.912 - KRAS (resistance)
+
+Stark gefunden: 1/8
+
+
+
+==========================================================================================
+MEDIKAMENT 3: Dabrafenib (BRAF V600E Inhibitor)
+==========================================================================================
+
+Erwartete Biomarker:
+  Primary: MUT__BRAF (V600E Mutation → high sensitivity)
+  Pathway: MUT__NRAS, MUT__KRAS (MAPK pathway)
+  Expression: TPM__BRAF
+
+Testing unimodality for all features...
+
+Generating 200 complementary pairs...
+
+Running CPSS with B=200 pairs...
+  Using q_rf=19 (reduced from q=96 to satisfy θ ≤ 1/√3)
+
+CPSS Results:
+  Features (d): 489
+  Target q: 96
+  Observed q̂: 19.0
+  θ (q̂/d): 0.0389
+  Worst-case τ*: 0.515
+  Features passing worst-case: 18
+  Features passing unimodal: 2
+
+------------------------------------------------------------------------------------------
+Top 15 Features:
+------------------------------------------------------------------------------------------
+✓  1. MUT__BRAF                           Score=1.000
+  378. METH__WDR81                         Score=1.000
+  40. METH__HNRPLL                        Score=1.000
+  476. METH__EGFL8                         Score=1.000
+   2. METH__CCM2                          Score=0.995
+  204. METH__CD3EAP                        Score=0.985
+  42. TPM__MIR142HG                       Score=0.978
+  43. METH__EVL                           Score=0.975
+  290. METH__MRPS18B                       Score=0.968
+  123. TPM__IKZF1                          Score=0.958
+  353. TPM__PIK3CG                         Score=0.955
+  479. METH__RINL                          Score=0.917
+  177. METH__BIN2                          Score=0.910
+  112. METH__TMEM199                       Score=0.890
+  30. METH__LOC25845                      Score=0.890
+
+------------------------------------------------------------------------------------------
+Biomarker Validierung:
+------------------------------------------------------------------------------------------
+✓✓ MUT__BRAF            Rank   1, Score 1.000 - BRAF V600E (primary target)
+✗  MUT__NRAS            NOT FOUND - NRAS (MAPK pathway)
+~  MUT__KRAS            Rank  38, Score 0.000 - KRAS (MAPK pathway) (zu schwach)
+✗  TPM__BRAF            NOT FOUND - BRAF expression
+
+Stark gefunden: 1/4
+
+
+
+==========================================================================================
+GESAMT-ZUSAMMENFASSUNG: RF-CPSS Performance
+==========================================================================================
+Erlotinib      : 0/7 Biomarker gefunden (0.0%)
+Cisplatin      : 1/8 Biomarker gefunden (12.5%)
+Dabrafenib     : 1/4 Biomarker gefunden (25.0%)
+
+GESAMT         : 2/19 Biomarker gefunden (10.5%)
+
+==========================================================================================
+✗ RF-CPSS unzureichend: Weniger als 25% der Biomarker gefunden
+==========================================================================================

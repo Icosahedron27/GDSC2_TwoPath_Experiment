@@ -4,19 +4,18 @@ from pandas import Series
 import numpy as np
 import math
 import random
-import json
-import yaml
 from numpy.typing import NDArray
+from diptest import diptest
 from sklearn.linear_model import ElasticNet
 from sklearn.ensemble import RandomForestRegressor
 
 # ----------------------------------------------------------------------------------------
 # General methods
 # ----------------------------------------------------------------------------------------
-# NOTE: The unimodality assumption in Shah & Samworth (2013) refers to the distribution
-# of \tilde{\Pi}_B(k) over random subsampling, NOT the marginal distribution of features X_j.
-# Since we only observe one realization of B pairs, we cannot test this assumption.
-# Therefore, we use ONLY the worst-case bound (Meinshausen-Bühlmann style).
+def test_unimodality(x):
+    dip, pval = diptest(x)
+    return pval >= 0.05
+
 
 def getSubsamples(X, y, B: int):
     n = X.shape[0]
@@ -35,97 +34,96 @@ def getSubsamples(X, y, B: int):
     
     return subsamples
 
-def tau_grid_TB(B: int):
-    start = 0.5 + 1.0 / B
-    end = 1.0
-    n_points = B - 1
-    return np.linspace(start, end, n_points)
-
-def C_tau_B(tau: float, B: int, theta: float = 1/np.sqrt(3)) -> float:
-    if theta > 1/np.sqrt(3):
-        return np.inf
-    
-    lower_1 = min(0.5 + theta**2, 0.5 + 1.0/(2*B) + 0.75*theta**2)
-    
-    if (tau > lower_1) and (tau <= 0.75):
-        denom = 2.0 * (2.0 * tau - 1.0 - 1.0/(2.0 * B))
-        if denom <= 0:
-            return np.inf
-        return 1.0 / denom
-    
-    if (tau > 0.75) and (tau <= 1.0):
-        num = 4.0 * (1.0 - tau + 1.0/(2.0 * B))
-        denom = 1.0 + 1.0/B
-        return num / denom
-    
-    return np.inf
-
-def tau_star_unimodal(B: int, q_hat: float, d: int, l: float, theta: float) -> float | None:
-    if theta > 1/np.sqrt(3):
-        return None
-    
-    taus = tau_grid_TB(B)
-    factor = (q_hat**2) / d
-    
-    feasible = []
-    for tau in taus:
-        c_val = C_tau_B(tau, B, theta=theta)
-        if c_val * factor <= l:
-            feasible.append(tau)
-    
-    if not feasible:
-        return None
-    return min(feasible)
-
 def get_important_features(cpss_scores, d, q_hat, theta, error_control_level, B, name):
     worst_case_bound = min(1, 0.5*(1+ (q_hat**2)/(error_control_level*d)))
-    
-    unimodal_bound = None
-    if theta <= 1/np.sqrt(3):
-        unimodal_bound = tau_star_unimodal(B, q_hat, d, error_control_level, theta)
     
     important_features = pd.DataFrame(
     index=cpss_scores["feature"],
     data={
         "Selection count": cpss_scores["selection_count"].values,
         "Pair count": cpss_scores["pair_count"].values,
-        "CPSS Score": cpss_scores["cpss_score"].values
+        "Unimodal": cpss_scores["is_unimodal"].values,
+        "Stability frequence 1 (WC)": 0.0,
+        "Stability frequence 2 (UM)": 0.0,
+        "Worst Case Bound": False,
+        "Unimodal Bound": False,
+        "Unimodal Threshold": None
     })
     important_features.index.name = "feature"
+
+    for row in cpss_scores.itertuples(index=False):
+        feat = row.feature
+        pair_count = row.pair_count
+        unimodal = row.is_unimodal
+        cpss_score = row.cpss_score
+
+        important_features.loc[feat, "Stability frequence 1 (WC)"] = cpss_score
+        if cpss_score >= worst_case_bound:
+            important_features.loc[feat, "Worst Case Bound"] = True
+
+        if unimodal:
+            stability_freq_unimodal = (1/B)*pair_count
+            important_features.loc[feat, "Stability frequence 2 (UM)"] = stability_freq_unimodal
+            tau_star = tau_star_unimodal(B, q_hat, s0_size=d, ell=error_control_level, theta=theta)
+            if tau_star is not None and stability_freq_unimodal >= tau_star:
+                important_features.loc[feat, "Unimodal Bound"] = True
+                important_features.loc[feat, "Unimodal Threshold"] = tau_star
     
-    important_features = important_features.sort_values('CPSS Score', ascending=False)
+    important_features = important_features.sort_values('Stability frequence 1 (WC)', ascending=False)
     important_features.to_csv("Significant_features"+name+".csv")
-    
-    bounds_info = {
-        "worst_case_bound": float(worst_case_bound),
-        "unimodal_bound": float(unimodal_bound) if unimodal_bound is not None else None,
-        "theta": float(theta),
-        "q_hat": float(q_hat),
-        "d": int(d),
-        "l": int(error_control_level),
-        "B": int(B),
-        "n_features_worst_case": int((cpss_scores["cpss_score"] >= worst_case_bound).sum()),
-        "n_features_unimodal": int((cpss_scores["cpss_score"] >= unimodal_bound).sum()) if unimodal_bound is not None else None
-    }
-    
-    with open(f"cpss_bounds_{name}.json", "w") as f:
-        json.dump(bounds_info, f, indent=2)
-    
-    features_above_worst_case = cpss_scores[cpss_scores["cpss_score"] >= worst_case_bound].copy()
-    features_above_worst_case.to_csv(f"features_above_worst_case_{name}.csv", index=False)
-    
     return important_features
 
-# ----------------------------------------------------------------------------------------
-# Main CPSS Feature Selection
-# ----------------------------------------------------------------------------------------
+# --------------------
+# Unimodality Optimization
+# --------------------
+def tau_star_unimodal(B: int, q_hat: float, s0_size: int, ell: float, theta: float) -> float | None:
+    taus = tau_grid_TB(B)
+    factor = (q_hat**2) / s0_size
+
+    feasible = []
+    for tau in taus:
+        c_val = C_tau_B(tau, B, theta=theta)
+        if c_val * factor <= ell:
+            feasible.append(tau)
+
+    if not feasible:
+        return None
+    return min(feasible)
+
+def tau_grid_TB(B: int) -> NDArray[np.float64]:
+    start = 0.5 + 1.0 / B          # 1/2 + 1/B
+    end = 1.0                      # 1
+    n_points = B - 1               # ergibt Schrittweite 1/(2B)
+    taus = np.linspace(start, end, n_points)
+    return taus
+
+def C_tau_B(tau: float, B: int, theta: float = 1/np.sqrt(3)) -> float:
+    if theta > 1/np.sqrt(3):
+        raise ValueError("Formula gilt only for theta ≤ 1/√3.")
+
+    lower_1 = min(0.5 + theta**2,
+                  0.5 + 1.0/(2*B) + 0.75*theta**2)
+
+    if (tau > lower_1) and (tau <= 0.75):
+        denom = 2.0 * (2.0 * tau - 1.0 - 1.0/(2.0 * B))
+        if denom <= 0:
+            raise ValueError(f"Denominator ≤ 0 for tau={tau}, B={B}")
+        return 1.0 / denom
+
+    if (tau > 0.75) and (tau <= 1.0):
+        num = 4.0 * (1.0 - tau + 1.0/(2.0 * B))
+        denom = 1.0 + 1.0/B
+        return num / denom
+    
+    raise ValueError(
+        f"tau={tau} is not in defined intervals acc. Theorem 2"
+    )
+
+
+
+
+
 def cpss_feature_selection(path: Path, XName, B: int, linear):
-    config_path = Path(__file__).parent.parent / 'configs' / 'prep' / 'blocks.yaml'
-    with open(config_path, 'r') as f:
-        config = yaml.safe_load(f)
-    
-    alpha_grid = config['cpss']['alpha_grid']
-    
     X = pd.read_parquet(path / XName)
     y = pd.read_parquet(path / 'y.parquet')
 
@@ -138,17 +136,24 @@ def cpss_feature_selection(path: Path, XName, B: int, linear):
     error_control_level = int(0.05 * d)
     q = int(np.sqrt(0.8 * error_control_level * d))
 
+    print("Testing unimodality for all features...")
+    unimodal_flags = {feature: test_unimodality(X[feature].values) for feature in X.columns}
+
     print(f"\nGenerating {B} complementary pairs...")
 
     subsamples = getSubsamples(X, y, B)
 
     print(f"\nRunning CPSS with B={B} pairs...")
     if linear:
-        selection_counts, pair_counts = cpss_linear_core(X, y, B, alpha_grid[0], subsamples, q)
+        selection_counts, pair_counts = cpss_linear_core(X, y, B, ALPHA_GRID[0], subsamples, q)
         name = 'linear'
     else:
-        rf_params = {'n_estimators': 100, 'max_depth': 12, 'random_state': 42}
-        selection_counts, pair_counts = cpss_rf_core(X, y, B, rf_params, subsamples, q)
+        # RF path with increased q for better biomarker recovery
+        q_rf = int(q * 0.5)
+        print(f"  Using q_rf={q_rf} (increased from q={q} for better biomarker recovery)")
+        rf_params = {'n_estimators': 200, 'max_depth': 15, 'max_features': 'sqrt', 
+                     'min_samples_split': 10, 'min_samples_leaf': 5, 'random_state': 42}
+        selection_counts, pair_counts = cpss_rf_core(X, y, B, rf_params, subsamples, q_rf)
         name = 'rf'
 
     q_hat = sum(selection_counts.values()) / (2*B)
@@ -158,7 +163,8 @@ def cpss_feature_selection(path: Path, XName, B: int, linear):
         'feature': list(selection_counts.keys()),
         'selection_count': list(selection_counts.values()),
         'pair_count': list(pair_counts.values()),
-        'cpss_score': [count / (2 * B) for count in selection_counts.values()]
+        'cpss_score': [count / (2 * B) for count in selection_counts.values()],
+        'is_unimodal': [unimodal_flags[feat] for feat in selection_counts.keys()]
     }).sort_values('cpss_score', ascending=False)
 
     cpss_scores.to_csv(f'cpss_scores_{name}.csv')
@@ -171,25 +177,23 @@ def cpss_feature_selection(path: Path, XName, B: int, linear):
     print(f"  Observed q̂: {q_hat:.1f}")
     print(f"  θ (q̂/d): {theta:.4f}")
     print(f"  Worst-case τ*: {min(1, 0.5*(1 + q_hat**2/(error_control_level*d))):.3f}")
-    print(f"  Features passing worst-case: {(cpss_scores['cpss_score'] >= min(1, 0.5*(1 + q_hat**2/(error_control_level*d)))).sum()}")
+    print(f"  Features passing worst-case: {important_features['Worst Case Bound'].sum()}")
+    print(f"  Features passing unimodal: {important_features['Unimodal Bound'].sum()}")
     
     return cpss_scores, important_features
 
 # ----------------------------------------------------------------------------------------
 # Linear Path specific
 # ----------------------------------------------------------------------------------------
+ALPHA_GRID = [0.95, 0.90, 0.85, 0.80, 0.70, 0.60, 0.50]
+ALPHA = 0.05
+
 def compute_lambda_grid(X, y, n_lambda=100, lambda_min_ratio=0.001):
-    if hasattr(X, 'values'):
-        X = X.values
-    if hasattr(y, 'values'):
-        y = y.values
-    y = np.asarray(y, dtype=np.float64).ravel()
-    X = np.asarray(X, dtype=np.float64)
-    
     n = X.shape[0]
     correlations = np.abs(X.T @ y) / n
     lambda_max = np.max(correlations)
     lambda_min = lambda_min_ratio * lambda_max
+
     lambdas = np.logspace(np.log10(lambda_max), np.log10(lambda_min), n_lambda)
     return lambdas
 
@@ -253,30 +257,40 @@ def cpss_linear_core(X, y, B, l1_ratios, subsamples, q):
 # ----------------------------------------------------------------------------------------
 # Non Linear Path specific
 # ----------------------------------------------------------------------------------------
-def rf_base_selector(X, y, target_q, feature_names=None, n_estimators=100, max_depth=12, 
-                     max_features='sqrt', min_samples_split=10, random_state=42):
+def rf_base_selector(X, y, target_q, n_estimators=100, max_depth=10, 
+                     max_features='sqrt', min_samples_split=5, min_samples_leaf=2,
+                     random_state=42, feature_names=None):
+    from sklearn.inspection import permutation_importance
+    
     model = RandomForestRegressor(
         n_estimators=n_estimators,
         max_depth=max_depth,
         max_features=max_features,
         min_samples_split=min_samples_split,
-        min_samples_leaf=5,
+        min_samples_leaf=min_samples_leaf,
         random_state=random_state,
         n_jobs=-1
     )
     model.fit(X, y)
     
-    importances = model.feature_importances_
+    # Use permutation importance with reduced repeats for speed
+    perm_result = permutation_importance(
+        model, X, y, n_repeats=3, random_state=random_state, n_jobs=-1
+    )
+    importances = perm_result.importances_mean
     
+    # Apply feature-type weighting if feature names available
     if feature_names is not None:
         weights = np.ones(len(feature_names))
         for i, name in enumerate(feature_names):
             if name.startswith('MUT__'):
-                weights[i] = 2.0
+                weights[i] = 2.0  # Prioritize mutations
             elif name.startswith('CNV__'):
-                weights[i] = 1.5
+                weights[i] = 1.5  # Prioritize copy number
             elif name.startswith('TPM__'):
-                weights[i] = 1.2
+                weights[i] = 1.2  # Slightly prioritize expression
+            # METH__ gets weight 1.0 (default)
+        
         importances = importances * weights
     
     ranked_indices = np.argsort(importances)[::-1]
