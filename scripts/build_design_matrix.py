@@ -124,6 +124,25 @@ def filter_tpm_by_expression(X: pd.DataFrame, min_tpm: float, min_frac: float) -
     return X, drop_cols
 
 
+def filter_by_sparsity(X: pd.DataFrame, block_prefix: str, min_frac: float) -> tuple[pd.DataFrame, list[str]]:
+    """Drop features with too few non-zero values (sparsity filter)."""
+    if X.empty or min_frac <= 0:
+        return X, []
+
+    block_cols = [col for col in X.columns if col.startswith(f"{block_prefix}__")]
+    if not block_cols:
+        return X, []
+
+    min_count = math.ceil(len(X) * min_frac)
+    non_zero_counts = (X[block_cols] != 0).sum(axis=0)
+    drop_cols = [col for col, count in non_zero_counts.items() if count < min_count]
+
+    if drop_cols:
+        X = X.drop(columns=drop_cols)
+
+    return X, drop_cols
+
+
 def main():
     parser = argparse.ArgumentParser(description='Build design matrix for drug')
     parser.add_argument('--drug', required=True, help='Drug name (column in IC50)')
@@ -183,6 +202,26 @@ def main():
         print(
             f"TPM filter removed {len(dropped_tpm)} features; "
             f"kept {kept} with TPM ≥ {min_tpm} in ≥ {min_frac:.0%} cells"
+        )
+    
+    # Apply mutation sparsity filter
+    mut_filter_cfg = (blocks_cfg or {}).get("mut_filter", {})
+    mut_min_frac = float(mut_filter_cfg.get("min_fraction", 0.0))
+    X, dropped_mut = filter_by_sparsity(X, "MUT", mut_min_frac)
+    if mut_min_frac > 0:
+        print(
+            f"MUT filter removed {len(dropped_mut)} features; "
+            f"kept features with ≥ {mut_min_frac:.0%} non-zero cells"
+        )
+    
+    # Apply CNV sparsity filter
+    cnv_filter_cfg = (blocks_cfg or {}).get("cnv_filter", {})
+    cnv_min_frac = float(cnv_filter_cfg.get("min_fraction", 0.0))
+    X, dropped_cnv = filter_by_sparsity(X, "CNV", cnv_min_frac)
+    if cnv_min_frac > 0:
+        print(
+            f"CNV filter removed {len(dropped_cnv)} features; "
+            f"kept features with ≥ {cnv_min_frac:.0%} non-zero cells"
         )
     
     # QC
