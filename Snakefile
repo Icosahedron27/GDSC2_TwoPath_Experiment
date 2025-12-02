@@ -130,8 +130,14 @@ def design_outputs(wildcards):
         "data/processed/{drug}/{run_id}/design_matrix/X_zScoreNormalized.parquet",
         "data/processed/{drug}/{run_id}/design_matrix/X_linear_sis_reduced.parquet",
         "data/processed/{drug}/{run_id}/design_matrix/X_general_sis_reduced.parquet",
+        "results/{drug}/{run_id}/cpss_linear_scores.csv",
+        "results/{drug}/{run_id}/cpss_rf_scores.csv",
     ]
-    return expand(templates, drug=drugs, run_id=RUN_ID)
+    global_outputs = [
+        "results/frequent_itemsets_rf.csv",
+        "results/frequent_itemsets_linear.csv",
+    ]
+    return expand(templates, drug=drugs, run_id=RUN_ID) + global_outputs
 
 
 rule design_matrices_complete:
@@ -194,3 +200,48 @@ rule sis_general:
         X_reduced="data/processed/{drug}/{run_id}/design_matrix/X_general_sis_reduced.parquet"
     shell:
         "python3 scripts/sis.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}' general"
+
+rule cpss_linear:
+    input:
+        X="data/processed/{drug}/{run_id}/design_matrix/X_linear_sis_reduced.parquet",
+        y="data/processed/{drug}/{run_id}/design_matrix/y.parquet"
+    output:
+        scores="results/{drug}/{run_id}/cpss_linear_scores.csv",
+        significant="results/{drug}/{run_id}/cpss_linear_significant.csv",
+        above_threshold="results/{drug}/{run_id}/cpss_linear_above_threshold.csv",
+        above_wc="results/{drug}/{run_id}/cpss_linear_above_worst_case.csv",
+        bounds="results/{drug}/{run_id}/cpss_linear_bounds.json"
+    params:
+        B=50
+    shell:
+        "python3 scripts/run_cpss.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}' --method linear --B {params.B}"
+
+rule frequent_itemsets:
+    input:
+        lambda wildcards: expand("results/{drug}/v1-union-na20/cpss_rf_above_threshold.csv",
+                                drug=[d.name for d in Path("results").iterdir() 
+                                      if d.is_dir() and (d / "v1-union-na20").exists()])
+    output:
+        rf="results/frequent_itemsets_rf.csv",
+        linear="results/frequent_itemsets_linear.csv"
+    params:
+        min_support=2,
+        max_size=3,
+        top_k=50
+    shell:
+        "python3 scripts/frequent_itemsets.py --method both --min-support {params.min_support} --max-size {params.max_size} --top-k {params.top_k}"
+
+rule cpss_rf:
+    input:
+        X="data/processed/{drug}/{run_id}/design_matrix/X_general_sis_reduced.parquet",
+        y="data/processed/{drug}/{run_id}/design_matrix/y.parquet"
+    output:
+        scores="results/{drug}/{run_id}/cpss_rf_scores.csv",
+        significant="results/{drug}/{run_id}/cpss_rf_significant.csv",
+        above_threshold="results/{drug}/{run_id}/cpss_rf_above_threshold.csv",
+        above_wc="results/{drug}/{run_id}/cpss_rf_above_worst_case.csv",
+        bounds="results/{drug}/{run_id}/cpss_rf_bounds.json"
+    params:
+        B=50
+    shell:
+        "python3 scripts/run_cpss.py --drug '{wildcards.drug}' --run-id '{wildcards.run_id}' --method rf --B {params.B}"

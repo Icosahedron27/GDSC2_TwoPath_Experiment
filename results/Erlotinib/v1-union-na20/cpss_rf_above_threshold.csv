@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__STRAP,100,50,1.0,0.029999999329447746,-0.14,0.22,True,1.0,unimodal,0.71,True
+METH__MPHOSPH9,99,49,0.99,0.009999999776482582,0.14,0.23,True,1.0,unimodal,0.71,True
+MUT__KRAS,92,42,0.92,0.019999999552965164,0.13,0.2,False,0.013,worst_case,0.8926380368098159,True
+CNV__FOXA1,92,42,0.92,0.0,0.04,0.2,False,0.013,worst_case,0.8926380368098159,True
+CNV__CDH10,92,42,0.92,0.0,0.09,0.2,False,0.013,worst_case,0.8926380368098159,True

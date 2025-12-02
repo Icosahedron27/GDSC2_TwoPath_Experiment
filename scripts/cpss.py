@@ -7,8 +7,11 @@ import random
 import json
 import yaml
 from numpy.typing import NDArray
-from sklearn.linear_model import ElasticNet
+from sklearn.linear_model import ElasticNet, LinearRegression
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.feature_selection import mutual_info_regression
+from scipy.stats import spearmanr
+from diptest import diptest
 
 # ----------------------------------------------------------------------------------------
 # General methods
@@ -34,6 +37,58 @@ def getSubsamples(X, y, B: int):
         subsamples.append((A_2j_minus_1, A_2j))
     
     return subsamples
+
+
+def compute_feature_metrics(X: pd.DataFrame, y: pd.Series) -> tuple[dict, dict, dict]:
+    """
+    Compute R², Spearman correlation, and Mutual Information for each feature.
+    
+    Args:
+        X: Design matrix (n_samples, n_features)
+        y: Target vector (n_samples,)
+        
+    Returns:
+        Tuple of (r2_scores, spearman_corr, mutual_info) dictionaries
+    """
+    r2_scores = {}
+    spearman_corr = {}
+    mutual_info = {}
+    
+    y_np = y.values.ravel() if isinstance(y, pd.Series) else y.ravel()
+    
+    for col in X.columns:
+        X_col = X[col].values.ravel()
+        
+        # Remove NaN values for this feature
+        mask = ~(np.isnan(X_col) | np.isnan(y_np))
+        if mask.sum() < 2:  # Need at least 2 samples
+            r2_scores[col] = np.nan
+            spearman_corr[col] = np.nan
+            mutual_info[col] = np.nan
+            continue
+        
+        X_clean = X_col[mask].reshape(-1, 1)
+        y_clean = y_np[mask]
+        
+        # 1) Linear R²
+        lr = LinearRegression()
+        lr.fit(X_clean, y_clean)
+        y_pred = lr.predict(X_clean)
+        ss_res = np.sum((y_clean - y_pred) ** 2)
+        ss_tot = np.sum((y_clean - np.mean(y_clean)) ** 2)
+        r2 = 1 - (ss_res / ss_tot) if ss_tot > 0 else 0.0
+        r2_scores[col] = r2
+        
+        # 2) Spearman correlation (with sign)
+        rho, _ = spearmanr(X_clean.ravel(), y_clean)
+        spearman_corr[col] = rho
+        
+        # 3) Mutual Information
+        mi = mutual_info_regression(X_clean, y_clean, random_state=42)[0]
+        mutual_info[col] = mi
+    
+    return r2_scores, spearman_corr, mutual_info
+
 
 def tau_grid_TB(B: int):
     start = 0.5 + 1.0 / B
@@ -84,6 +139,15 @@ def get_important_features(cpss_scores, d, q_hat, theta, error_control_level, B,
     if theta <= 1/np.sqrt(3):
         unimodal_bound = tau_star_unimodal(B, q_hat, d, error_control_level, theta)
     
+    # Determine threshold for each feature based on unimodality
+    cpss_scores['threshold_type'] = cpss_scores['unimodal'].apply(
+        lambda x: 'unimodal' if (x and unimodal_bound is not None) else 'worst_case'
+    )
+    cpss_scores['threshold_value'] = cpss_scores['threshold_type'].apply(
+        lambda x: unimodal_bound if (x == 'unimodal' and unimodal_bound is not None) else worst_case_bound
+    )
+    cpss_scores['above_threshold'] = cpss_scores['cpss_score'] >= cpss_scores['threshold_value']
+    
     important_features = pd.DataFrame(
     index=cpss_scores["feature"],
     data={
@@ -105,12 +169,18 @@ def get_important_features(cpss_scores, d, q_hat, theta, error_control_level, B,
         "l": int(error_control_level),
         "B": int(B),
         "n_features_worst_case": int((cpss_scores["cpss_score"] >= worst_case_bound).sum()),
-        "n_features_unimodal": int((cpss_scores["cpss_score"] >= unimodal_bound).sum()) if unimodal_bound is not None else None
+        "n_features_unimodal": int((cpss_scores["cpss_score"] >= unimodal_bound).sum()) if unimodal_bound is not None else None,
+        "n_features_above_threshold": int(cpss_scores['above_threshold'].sum())
     }
     
     with open(f"cpss_bounds_{name}.json", "w") as f:
         json.dump(bounds_info, f, indent=2)
     
+    # Select features based on their individual threshold
+    features_above_threshold = cpss_scores[cpss_scores['above_threshold']].copy()
+    features_above_threshold.to_csv(f"features_above_threshold_{name}.csv", index=False)
+    
+    # Keep legacy worst-case file for comparison
     features_above_worst_case = cpss_scores[cpss_scores["cpss_score"] >= worst_case_bound].copy()
     features_above_worst_case.to_csv(f"features_above_worst_case_{name}.csv", index=False)
     
@@ -144,24 +214,58 @@ def cpss_feature_selection(path: Path, XName, B: int, linear):
 
     print(f"\nRunning CPSS with B={B} pairs...")
     if linear:
-        selection_counts, pair_counts = cpss_linear_core(X, y, B, alpha_grid[0], subsamples, q)
+        selection_counts, pair_counts, pair_distributions = cpss_linear_core(X, y, B, alpha_grid[0], subsamples, q)
         name = 'linear'
     else:
         rf_params = {'n_estimators': 100, 'max_depth': 12, 'random_state': 42}
-        selection_counts, pair_counts = cpss_rf_core(X, y, B, rf_params, subsamples, q)
+        selection_counts, pair_counts, pair_distributions = cpss_rf_core(X, y, B, rf_params, subsamples, q)
         name = 'rf'
 
     q_hat = sum(selection_counts.values()) / (2*B)
     theta = q_hat / d
+    
+    # Load full feature matrix for computing validation metrics (only for selected features)
+    X_full = pd.read_parquet(path / 'X.parquet')
+    if 'cell_id' in X_full.columns:
+        X_full = X_full.drop(columns=['cell_id'])
+    
+    selected_features = [feat for feat, count in selection_counts.items() if count > 0]
+    print(f"\nComputing validation metrics (R², Spearman, MI) for {len(selected_features)} selected features from full matrix...")
+    X_selected = X_full[selected_features]
+    r2_dict, spearman_dict, mi_dict = compute_feature_metrics(X_selected, y.iloc[:, 0])
+    
+    # Test unimodality of pair occurrence distributions
+    print(f"\nTesting unimodality of pair occurrence distributions...")
+    unimodal_flags = {}
+    diptest_pvalues = {}
+    for feature in selection_counts.keys():
+        if pair_counts[feature] > 0:  # Only test features that appear at least once
+            distribution = np.array(pair_distributions[feature])
+            try:
+                dip_stat, p_value = diptest(distribution)
+                diptest_pvalues[feature] = p_value
+                # p > 0.05 suggests unimodality
+                unimodal_flags[feature] = p_value > 0.05
+            except:
+                diptest_pvalues[feature] = np.nan
+                unimodal_flags[feature] = False
+        else:
+            diptest_pvalues[feature] = np.nan
+            unimodal_flags[feature] = False
 
     cpss_scores = pd.DataFrame({
         'feature': list(selection_counts.keys()),
         'selection_count': list(selection_counts.values()),
         'pair_count': list(pair_counts.values()),
-        'cpss_score': [count / (2 * B) for count in selection_counts.values()]
+        'cpss_score': [count / (2 * B) for count in selection_counts.values()],
+        'r2': [round(r2_dict.get(feat, np.nan), 2) for feat in selection_counts.keys()],
+        'spearman': [round(spearman_dict.get(feat, np.nan), 2) for feat in selection_counts.keys()],
+        'mutual_info': [round(mi_dict.get(feat, np.nan), 2) for feat in selection_counts.keys()],
+        'unimodal': [unimodal_flags.get(feat, False) for feat in selection_counts.keys()],
+        'diptest_pvalue': [round(diptest_pvalues.get(feat, np.nan), 3) for feat in selection_counts.keys()]
     }).sort_values('cpss_score', ascending=False)
 
-    cpss_scores.to_csv(f'cpss_scores_{name}.csv')
+    cpss_scores.to_csv(f'cpss_scores_{name}.csv', index=False)
     
     important_features = get_important_features(cpss_scores, d, q_hat, theta, error_control_level, B, name)
     
@@ -229,6 +333,7 @@ def cpss_linear_core(X, y, B, l1_ratios, subsamples, q):
     feature_names = X.columns.tolist()
     selection_counts = {feature: 0 for feature in feature_names}
     pair_counts = {feature: 0 for feature in feature_names}
+    pair_distributions = {feature: [] for feature in feature_names}  # Track per-pair occurrences
 
     for j, (A_odd, A_even) in enumerate(subsamples, start=1):
         X_sub_odd = X.iloc[A_odd].values
@@ -244,10 +349,15 @@ def cpss_linear_core(X, y, B, l1_ratios, subsamples, q):
             selection_counts[feature_names[feat_idx]] += 1
         
         selected_both = selected_odd & selected_even
-        for feat_idx in selected_both:
-            pair_counts[feature_names[feat_idx]] += 1
+        for feat_name in feature_names:
+            feat_idx = feature_names.index(feat_name)
+            if feat_idx in selected_both:
+                pair_counts[feat_name] += 1
+                pair_distributions[feat_name].append(1)
+            else:
+                pair_distributions[feat_name].append(0)
         
-    return selection_counts, pair_counts
+    return selection_counts, pair_counts, pair_distributions
 
 
 # ----------------------------------------------------------------------------------------
@@ -291,6 +401,7 @@ def cpss_rf_core(X, y, B, rf_params, subsamples, q):
     feature_names = X.columns.tolist()
     selection_counts = {feature: 0 for feature in feature_names}
     pair_counts = {feature: 0 for feature in feature_names}
+    pair_distributions = {feature: [] for feature in feature_names}  # Track per-pair occurrences
 
     for j, (A_odd, A_even) in enumerate(subsamples, start=1):
         X_sub_odd = X.iloc[A_odd].values
@@ -306,7 +417,12 @@ def cpss_rf_core(X, y, B, rf_params, subsamples, q):
             selection_counts[feature_names[feat_idx]] += 1
         
         selected_both = selected_odd & selected_even
-        for feat_idx in selected_both:
-            pair_counts[feature_names[feat_idx]] += 1
+        for feat_name in feature_names:
+            feat_idx = feature_names.index(feat_name)
+            if feat_idx in selected_both:
+                pair_counts[feat_name] += 1
+                pair_distributions[feat_name].append(1)
+            else:
+                pair_distributions[feat_name].append(0)
         
-    return selection_counts, pair_counts
+    return selection_counts, pair_counts, pair_distributions

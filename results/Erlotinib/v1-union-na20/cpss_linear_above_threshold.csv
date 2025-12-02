@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__VWA8,99,49,0.99,0.05000000074505806,-0.24,0.04,True,1.0,unimodal,0.7,True
+TPM__VAV3,98,48,0.98,0.05000000074505806,-0.24,0.03,True,1.0,unimodal,0.7,True
+TPM__TFF3,94,44,0.94,0.05000000074505806,0.17,0.12,True,0.181,unimodal,0.7,True
+MUT__EGFR,94,44,0.94,0.03999999910593033,-0.14,0.2,True,0.181,unimodal,0.7,True
+TPM__STK32A,92,42,0.92,0.07999999821186066,0.28,0.12,False,0.013,worst_case,0.888721472392638,True
