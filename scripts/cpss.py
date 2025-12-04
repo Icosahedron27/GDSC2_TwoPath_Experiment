@@ -16,11 +16,6 @@ from diptest import diptest
 # ----------------------------------------------------------------------------------------
 # General methods
 # ----------------------------------------------------------------------------------------
-# NOTE: The unimodality assumption in Shah & Samworth (2013) refers to the distribution
-# of \tilde{\Pi}_B(k) over random subsampling, NOT the marginal distribution of features X_j.
-# Since we only observe one realization of B pairs, we cannot test this assumption.
-# Therefore, we use ONLY the worst-case bound (Meinshausen-Bühlmann style).
-
 def getSubsamples(X, y, B: int):
     n = X.shape[0]
     n_half = math.floor(n / 2)

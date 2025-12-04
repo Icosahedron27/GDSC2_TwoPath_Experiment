@@ -1,0 +1,193 @@
+"""
+FDR Analysis Pipeline - Robust Configuration
+Runs 50 drugs x 20 permutations x 2 methods = 100 FDR estimates.
+Expected runtime: ~4h with 4 cores, ~8h with 2 cores.
+"""
+from pathlib import Path
+import yaml
+import random
+import pandas as pd
+import numpy as np
+
+# Config
+with open("configs/prep/global.yaml") as f:
+    GLOBAL = yaml.safe_load(f)
+
+RUN_ID_ORIG = GLOBAL.get("run_tag", "v1-union-na20")
+RUN_ID_FDR = "fdr_analysis"
+N_PERMS = 20
+B_PAIRS = 50
+RANDOM_SEED = 42
+
+# Select 50 drugs for robust FDR analysis
+def get_test_drugs():
+    results_dir = Path("results")
+    candidates = []
+    for drug_dir in results_dir.iterdir():
+        if drug_dir.is_dir():
+            linear = drug_dir / RUN_ID_ORIG / "cpss_linear_above_threshold.csv"
+            rf = drug_dir / RUN_ID_ORIG / "cpss_rf_above_threshold.csv"
+            if linear.exists() and rf.exists():
+                candidates.append(drug_dir.name)
+    
+    random.seed(RANDOM_SEED)
+    return random.sample(sorted(candidates), min(50, len(candidates)))
+
+DRUGS = get_test_drugs()
+METHODS = ["linear", "rf"]
+
+rule all:
+    input:
+        expand("results/{drug}/" + RUN_ID_FDR + "/fdr_summary_{method}.csv",
+               drug=DRUGS, method=METHODS),
+        "results/fdr_combined_summary.csv"
+
+rule run_fdr_for_drug:
+    """Run FDR analysis for one drug and method using temporary workspace."""
+    input:
+        orig_results="results/{drug}/" + RUN_ID_ORIG + "/cpss_{method}_above_threshold.csv",
+        X_norm="data/processed/{drug}/" + RUN_ID_ORIG + "/design_matrix/X_zScoreNormalized.parquet",
+        y_orig="data/processed/{drug}/" + RUN_ID_ORIG + "/design_matrix/y.parquet",
+        feature_meta="data/processed/{drug}/" + RUN_ID_ORIG + "/design_matrix/feature_meta.parquet"
+    output:
+        summary="results/{drug}/" + RUN_ID_FDR + "/fdr_summary_{method}.csv",
+        null_dist="results/{drug}/" + RUN_ID_FDR + "/null_distribution_{method}.csv"
+    params:
+        n_perms=N_PERMS,
+        B=B_PAIRS,
+        seed=RANDOM_SEED
+    run:
+        import sys
+        import tempfile
+        import shutil
+        from pathlib import Path
+        
+        sys.path.insert(0, 'scripts')
+        from sis import sis_linear, sis_general
+        from cpss import cpss_feature_selection
+        
+        # Original selection count
+        orig_df = pd.read_csv(input.orig_results)
+        n_original = len(orig_df)
+        
+        print(f"\n{'='*60}")
+        print(f"FDR: {wildcards.drug} | {wildcards.method}")
+        print(f"Original: {n_original} features")
+        print(f"Running {params.n_perms} permutations...")
+        
+        # Load original data
+        X_norm = pd.read_parquet(input.X_norm)
+        y_orig = pd.read_parquet(input.y_orig)
+        feature_meta = pd.read_parquet(input.feature_meta)
+        
+        null_counts = []
+        
+        for perm_i in range(params.n_perms):
+            perm_seed = params.seed + perm_i
+            
+            # Create temp workspace
+            with tempfile.TemporaryDirectory(prefix=f"fdr_{wildcards.drug}_{perm_i}_") as tmpdir:
+                tmp_path = Path(tmpdir)
+                
+                # Copy files (X.parquet needed by CPSS for validation metrics)
+                X_norm.to_parquet(tmp_path / "X_zScoreNormalized.parquet")
+                X_norm.to_parquet(tmp_path / "X.parquet")  # CPSS reads this
+                feature_meta.to_parquet(tmp_path / "feature_meta.parquet")
+                
+                # Permute y
+                y_perm = y_orig.sample(frac=1, random_state=perm_seed).reset_index(drop=True)
+                y_perm.to_parquet(tmp_path / "y.parquet")
+                
+                # Run SIS
+                if wildcards.method == "linear":
+                    sis_linear(tmp_path, alpha=4.0)
+                    matrix_name = "X_linear_sis_reduced.parquet"
+                else:
+                    sis_general(tmp_path, alpha=4.0)
+                    matrix_name = "X_general_sis_reduced.parquet"
+                
+                # Run CPSS
+                cpss_scores, _ = cpss_feature_selection(
+                    tmp_path,
+                    matrix_name,
+                    B=params.B,
+                    linear=(wildcards.method == "linear")
+                )
+                
+                # Count above threshold
+                n_selected = cpss_scores['above_threshold'].sum()
+                null_counts.append(n_selected)
+                
+                # Clean CPSS outputs in CWD
+                method_suffix = "linear" if wildcards.method == "linear" else "rf"
+                for f in [
+                    f"cpss_scores_{method_suffix}.csv",
+                    f"Significant_features{method_suffix}.csv",
+                    f"features_above_threshold_{method_suffix}.csv",
+                    f"features_above_worst_case_{method_suffix}.csv",
+                    f"cpss_bounds_{method_suffix}.json"
+                ]:
+                    Path(f).unlink(missing_ok=True)
+            
+            if (perm_i + 1) % 2 == 0 or perm_i == 0:
+                print(f"  Perm {perm_i+1}/{params.n_perms}: {n_selected} features")
+        
+        # Compute FDR
+        E0_V = np.mean(null_counts)
+        fdr = E0_V / n_original if n_original > 0 else np.nan
+        
+        print(f"Results: E₀[V]={E0_V:.2f}, FDR={fdr:.4f}")
+        print(f"{'='*60}\n")
+        
+        # Save null distribution
+        Path(output.null_dist).parent.mkdir(parents=True, exist_ok=True)
+        null_df = pd.DataFrame({
+            'permutation': range(params.n_perms),
+            'n_selected': null_counts
+        })
+        null_df.to_csv(output.null_dist, index=False)
+        
+        # Save summary
+        summary_df = pd.DataFrame([{
+            'drug': wildcards.drug,
+            'method': wildcards.method,
+            'n_original': n_original,
+            'E0_V': E0_V,
+            'fdr': fdr,
+            'null_mean': np.mean(null_counts),
+            'null_std': np.std(null_counts),
+            'null_min': np.min(null_counts),
+            'null_max': np.max(null_counts),
+            'n_perms': params.n_perms,
+            'B': params.B
+        }])
+        summary_df.to_csv(output.summary, index=False)
+
+rule combine_results:
+    """Combine all FDR summaries."""
+    input:
+        expand("results/{drug}/" + RUN_ID_FDR + "/fdr_summary_{method}.csv",
+               drug=DRUGS, method=METHODS)
+    output:
+        "results/fdr_combined_summary.csv"
+    run:
+        dfs = []
+        for f in input:
+            if Path(f).exists():
+                dfs.append(pd.read_csv(f))
+        
+        if dfs:
+            combined = pd.concat(dfs, ignore_index=True)
+            combined.to_csv(output[0], index=False)
+            
+            print(f"\n{'='*60}")
+            print("FDR Analysis Summary")
+            print(f"{'='*60}")
+            for method in ["linear", "rf"]:
+                subset = combined[combined['method'] == method]
+                if len(subset) > 0:
+                    print(f"{method.upper()}:")
+                    print(f"  Median FDR: {subset['fdr'].median():.4f}")
+                    print(f"  Mean FDR:   {subset['fdr'].mean():.4f}")
+                    print(f"  Range:      {subset['fdr'].min():.4f} - {subset['fdr'].max():.4f}")
+            print(f"{'='*60}\n")
