@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__ACTN1,100,50,1.0,0.05999999865889549,-0.18,0.26,True,1.0,unimodal,0.71,True
+METH__GPN3,100,50,1.0,0.029999999329447746,0.17,0.29,True,1.0,unimodal,0.71,True
+METH__MIR1915,99,49,0.99,0.019999999552965164,-0.16,0.26,True,1.0,unimodal,0.71,True
+METH__AGPHD1,94,44,0.94,0.029999999329447746,-0.15,0.27,True,0.181,unimodal,0.71,True
+METH__ZNF623,92,42,0.92,0.0,0.06,0.26,False,0.013,worst_case,0.8958762886597937,True

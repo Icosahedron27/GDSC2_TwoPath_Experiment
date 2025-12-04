@@ -1,0 +1,8 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__IFNWP19,100,50,1.0,0.029999999329447746,0.2,0.2,True,1.0,unimodal,0.71,True
+METH__SNORA22,100,50,1.0,0.019999999552965164,0.11,0.18,True,1.0,unimodal,0.71,True
+METH__GABARAPL1,100,50,1.0,0.019999999552965164,-0.18,0.18,True,1.0,unimodal,0.71,True
+METH__SIRT2,100,50,1.0,0.03999999910593033,0.13,0.18,True,1.0,unimodal,0.71,True
+METH__AP1B1,99,49,0.99,0.03999999910593033,0.22,0.18,True,1.0,unimodal,0.71,True
+METH__NASP,94,44,0.94,0.019999999552965164,0.14,0.2,True,0.181,unimodal,0.71,True
+METH__MGC16384,91,42,0.91,0.0,0.13,0.17,False,0.013,worst_case,0.896551724137931,True

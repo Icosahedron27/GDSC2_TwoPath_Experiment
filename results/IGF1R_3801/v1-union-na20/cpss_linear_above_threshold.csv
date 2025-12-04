@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SLC38A5,99,49,0.99,0.11999999731779099,-0.32,0.07,True,1.0,unimodal,0.7,True
+TPM__LIN28B,93,43,0.93,0.07000000029802322,-0.18,0.06,True,0.053,unimodal,0.7,True
+TPM__ADAMTS10,89,39,0.89,0.07000000029802322,-0.21,0.07,False,0.0,worst_case,0.8856210255716412,True

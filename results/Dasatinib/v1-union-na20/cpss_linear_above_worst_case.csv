@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__PRICKLE1,99,49,0.99,0.07999999821186066,-0.32,0.07,True,1.0,unimodal,0.71,True
+TPM__OAZ3,97,47,0.97,0.11999999731779099,0.36,0.1,True,0.992,unimodal,0.71,True
+TPM__LPAR5,94,44,0.94,0.07999999821186066,-0.22,0.05,True,0.181,unimodal,0.71,True
+TPM__MTUS1,91,41,0.91,0.07999999821186066,0.26,0.01,False,0.002,worst_case,0.8962014269986449,True
+METH__BEST1,90,40,0.9,0.07999999821186066,-0.28,0.05,False,0.0,worst_case,0.8962014269986449,True

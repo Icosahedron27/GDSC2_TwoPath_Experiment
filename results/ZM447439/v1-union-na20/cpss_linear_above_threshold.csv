@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__GMIP,97,47,0.97,0.12999999523162842,-0.32,0.08,True,0.992,unimodal,0.7,True
+TPM__PDCD6IP-DT,97,47,0.97,0.1599999964237213,0.42,0.13,True,0.992,unimodal,0.7,True
+METH__MIR150,95,45,0.95,0.12999999523162842,0.35,0.09,True,0.458,unimodal,0.7,True
+TPM__SNX21,94,44,0.94,0.15000000596046448,0.36,0.14,True,0.181,unimodal,0.7,True
+TPM__PSTPIP1,91,41,0.91,0.18000000715255737,-0.41,0.13,False,0.002,worst_case,0.8891422852233677,True

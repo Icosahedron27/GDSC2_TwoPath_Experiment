@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__METTL11A,96,46,0.96,0.07000000029802322,0.26,0.04,True,0.832,unimodal,0.71,True
+TPM__MOK,96,46,0.96,0.07999999821186066,0.28,0.01,True,0.832,unimodal,0.71,True
+TPM__BCL2L1,95,45,0.95,0.09000000357627869,0.29,0.04,True,0.458,unimodal,0.71,True
+TPM__FANCE,91,41,0.91,0.07999999821186066,-0.27,0.01,False,0.002,worst_case,0.899833957033957,True

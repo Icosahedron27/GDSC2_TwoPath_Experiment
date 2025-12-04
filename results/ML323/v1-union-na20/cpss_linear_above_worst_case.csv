@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__AGAP2,98,48,0.98,0.18000000715255737,-0.42,0.14,True,1.0,unimodal,0.71,True
+TPM__RAI14,93,43,0.93,0.12999999523162842,0.37,0.13,True,0.053,unimodal,0.71,True
+TPM__NR2F1-AS1,93,43,0.93,0.11999999731779099,0.36,0.08,True,0.053,unimodal,0.71,True

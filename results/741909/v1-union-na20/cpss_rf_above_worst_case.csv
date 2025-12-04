@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+CNV__RAD51B,90,41,0.9,0.009999999776482582,0.15,0.23,False,0.002,worst_case,0.8897435897435897,True

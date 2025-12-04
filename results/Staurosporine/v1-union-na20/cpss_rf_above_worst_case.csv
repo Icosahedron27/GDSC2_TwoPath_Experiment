@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__ERCC3,99,49,0.99,0.029999999329447746,0.11,0.24,True,1.0,unimodal,0.71,True
+METH__CCDC64,96,46,0.96,0.009999999776482582,-0.13,0.25,True,0.832,unimodal,0.71,True
+TPM__SNORA15,90,40,0.9,0.0,0.04,0.26,False,0.0,worst_case,0.8960016835016835,True

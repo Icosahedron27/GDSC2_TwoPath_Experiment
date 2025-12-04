@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__TGIF2,93,43,0.93,0.07999999821186066,-0.33,0.06,True,0.053,unimodal,0.71,True

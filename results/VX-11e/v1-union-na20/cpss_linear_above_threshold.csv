@@ -1,0 +1,3 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__TEX10,92,42,0.92,0.05999999865889549,0.23,0.07,False,0.013,worst_case,0.890024812542604,True
+TPM__ADAT2,90,40,0.9,0.09000000357627869,-0.28,0.04,False,0.0,worst_case,0.890024812542604,True

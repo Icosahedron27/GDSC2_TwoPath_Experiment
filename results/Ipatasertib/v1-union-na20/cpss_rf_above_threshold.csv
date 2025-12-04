@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+MUT__PTEN,100,50,1.0,0.03999999910593033,-0.23,0.26,True,1.0,unimodal,0.71,True
+MUT__TP53,100,50,1.0,0.0,-0.03,0.24,True,1.0,unimodal,0.71,True
+CNV__SPOP,98,48,0.98,0.029999999329447746,0.23,0.24,True,1.0,unimodal,0.71,True
+CNV__MAML2,94,44,0.94,0.029999999329447746,0.19,0.26,True,0.181,unimodal,0.71,True
+METH__ERCC1,92,42,0.92,0.03999999910593033,-0.09,0.24,False,0.013,worst_case,0.8918367346938776,True

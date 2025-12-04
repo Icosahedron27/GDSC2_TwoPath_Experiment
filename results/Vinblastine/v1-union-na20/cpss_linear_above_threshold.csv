@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,100,50,1.0,0.18000000715255737,0.42,0.14,True,1.0,unimodal,0.71,True
+TPM__KRT8P10,95,45,0.95,0.15000000596046448,0.41,0.12,True,0.458,unimodal,0.71,True
+TPM__RSL24D1,93,43,0.93,0.17000000178813934,-0.44,0.14,True,0.053,unimodal,0.71,True

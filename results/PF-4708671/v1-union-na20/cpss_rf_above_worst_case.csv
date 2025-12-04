@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__LMNA,99,49,0.99,0.2199999988079071,0.47,0.26,True,1.0,unimodal,0.71,True
+TPM__S100A6,94,44,0.94,0.20000000298023224,0.46,0.2,True,0.181,unimodal,0.71,True
+TPM__IFITM10,91,41,0.91,0.12999999523162842,0.45,0.19,False,0.002,worst_case,0.8926380368098159,True

@@ -1,0 +1,13 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__NRP1,100,50,1.0,0.10000000149011612,-0.28,0.26,True,1.0,unimodal,0.71,True
+METH__PTGR2,100,50,1.0,0.05999999865889549,-0.24,0.26,True,1.0,unimodal,0.71,True
+METH__AGPHD1,100,50,1.0,0.03999999910593033,-0.17,0.24,True,1.0,unimodal,0.71,True
+METH__ABCD3,100,50,1.0,0.05999999865889549,-0.2,0.24,True,1.0,unimodal,0.71,True
+TPM__PIK3CG,100,50,1.0,0.12999999523162842,-0.2,0.25,True,1.0,unimodal,0.71,True
+METH__ZNF697,100,50,1.0,0.10000000149011612,-0.18,0.25,True,1.0,unimodal,0.71,True
+METH__LAPTM4A,100,50,1.0,0.10999999940395355,-0.28,0.25,True,1.0,unimodal,0.71,True
+METH__RAPH1,99,49,0.99,0.05000000074505806,-0.17,0.23,True,1.0,unimodal,0.71,True
+METH__KDSR,97,47,0.97,0.03999999910593033,-0.07,0.24,True,0.992,unimodal,0.71,True
+METH__ATP6V1D,96,46,0.96,0.05999999865889549,-0.2,0.26,True,0.832,unimodal,0.71,True
+METH__GPN3,94,44,0.94,0.03999999910593033,0.21,0.28,True,0.181,unimodal,0.71,True
+METH__BHLHE41,94,44,0.94,0.03999999910593033,-0.11,0.22,True,0.181,unimodal,0.71,True

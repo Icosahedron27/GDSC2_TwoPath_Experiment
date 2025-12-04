@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__STK32A,99,49,0.99,0.03999999910593033,0.16,0.05,True,1.0,unimodal,0.71,True
+TPM__ZKSCAN8P1,98,48,0.98,0.03999999910593033,-0.2,0.02,True,1.0,unimodal,0.71,True
+TPM__RGS11,93,43,0.93,0.05000000074505806,0.2,0.03,True,0.053,unimodal,0.71,True
+TPM__TNFAIP8,93,43,0.93,0.05000000074505806,-0.22,0.04,True,0.053,unimodal,0.71,True

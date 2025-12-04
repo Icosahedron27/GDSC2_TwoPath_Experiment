@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__SNX3,95,45,0.95,0.05000000074505806,-0.21,0.17,True,0.458,unimodal,0.71,True
+METH__USP54,94,44,0.94,0.05999999865889549,0.19,0.01,True,0.181,unimodal,0.71,True
+TPM__FES,91,41,0.91,0.05999999865889549,-0.21,0.02,False,0.002,worst_case,0.8993111278054278,True

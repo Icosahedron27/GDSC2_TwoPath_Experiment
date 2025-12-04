@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__DCK,100,50,1.0,0.25,-0.44,0.2,True,1.0,unimodal,0.7,True
+TPM__YIF1A,94,44,0.94,0.17000000178813934,0.39,0.15,True,0.181,unimodal,0.7,True
+TPM__SLC2A8,94,44,0.94,0.1599999964237213,0.37,0.09,True,0.181,unimodal,0.7,True
+METH__CDT1,89,39,0.89,0.17000000178813934,0.4,0.13,False,0.0,worst_case,0.8876950067476383,True

@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__H2AFY,91,41,0.91,0.10000000149011612,0.28,0.06,False,0.002,worst_case,0.8871837044534413,True

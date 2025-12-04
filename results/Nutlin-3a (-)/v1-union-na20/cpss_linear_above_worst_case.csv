@@ -1,0 +1,11 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+CNV__ASXL1,100,50,1.0,0.12999999523162842,0.38,0.24,True,1.0,unimodal,0.71,True
+TPM__DDB2,100,50,1.0,0.15000000596046448,-0.38,0.12,True,1.0,unimodal,0.71,True
+TPM__EDA2R,100,50,1.0,0.1599999964237213,-0.34,0.16,True,1.0,unimodal,0.71,True
+TPM__MDM2,100,50,1.0,0.20999999344348907,-0.41,0.14,True,1.0,unimodal,0.71,True
+TPM__RPL22L1,100,50,1.0,0.15000000596046448,-0.36,0.12,True,1.0,unimodal,0.71,True
+TPM__ECT2,100,50,1.0,0.14000000059604645,0.38,0.14,True,1.0,unimodal,0.71,True
+TPM__MOB3A,94,44,0.94,0.1599999964237213,-0.34,0.09,True,0.181,unimodal,0.71,True
+TPM__APLP2,93,43,0.93,0.15000000596046448,0.38,0.13,True,0.053,unimodal,0.71,True
+TPM__PLEKHA7,92,42,0.92,0.12999999523162842,0.36,0.05,False,0.013,worst_case,0.8955119360269359,True
+TPM__RPL3,90,40,0.9,0.18000000715255737,-0.46,0.15,False,0.0,worst_case,0.8955119360269359,True

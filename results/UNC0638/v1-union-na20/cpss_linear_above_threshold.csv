@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__PSTPIP1,98,48,0.98,0.30000001192092896,-0.41,0.2,True,1.0,unimodal,0.71,True
+METH__ZNF214,95,45,0.95,0.23999999463558197,-0.41,0.19,True,0.458,unimodal,0.71,True
+TPM__KIF21B,91,41,0.91,0.33000001311302185,-0.46,0.22,False,0.002,worst_case,0.8911455608718766,True

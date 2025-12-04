@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,100,50,1.0,0.1599999964237213,0.39,0.09,True,1.0,unimodal,0.7,True

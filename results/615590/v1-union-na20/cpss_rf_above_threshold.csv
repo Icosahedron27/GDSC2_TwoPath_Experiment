@@ -1,0 +1,12 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__COBLL1,100,50,1.0,0.029999999329447746,-0.21,0.21,True,1.0,unimodal,0.7,True
+METH__RGMB,100,50,1.0,0.05999999865889549,-0.23,0.25,True,1.0,unimodal,0.7,True
+METH__PTPN14,100,50,1.0,0.05999999865889549,-0.28,0.21,True,1.0,unimodal,0.7,True
+METH__DSTN,100,50,1.0,0.09000000357627869,-0.29,0.2,True,1.0,unimodal,0.7,True
+METH__AP1B1,99,49,0.99,0.03999999910593033,0.2,0.21,True,1.0,unimodal,0.7,True
+METH__FAM38A,99,49,0.99,0.0,0.12,0.21,True,1.0,unimodal,0.7,True
+METH__ZNF697,97,47,0.97,0.05999999865889549,-0.19,0.27,True,0.992,unimodal,0.7,True
+METH__ATP6V1D,97,47,0.97,0.05000000074505806,-0.17,0.22,True,0.992,unimodal,0.7,True
+METH__TMEM49,96,46,0.96,0.05999999865889549,-0.23,0.22,True,0.832,unimodal,0.7,True
+METH__TEAD4,92,42,0.92,0.05000000074505806,-0.21,0.22,False,0.013,worst_case,0.8897435897435897,True
+METH__SUOX,90,40,0.9,0.03999999910593033,-0.19,0.23,False,0.0,worst_case,0.8897435897435897,True

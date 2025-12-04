@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__ZBED4,100,50,1.0,0.14000000059604645,-0.41,0.11,True,1.0,unimodal,0.7,True
+TPM__BOD1,99,49,0.99,0.14000000059604645,0.33,0.12,True,1.0,unimodal,0.7,True
+METH__MGAT1,91,41,0.91,0.20999999344348907,0.39,0.21,False,0.002,worst_case,0.8826987921727396,True
+TPM__RHEB,89,39,0.89,0.12999999523162842,0.35,0.08,False,0.0,worst_case,0.8826987921727396,True

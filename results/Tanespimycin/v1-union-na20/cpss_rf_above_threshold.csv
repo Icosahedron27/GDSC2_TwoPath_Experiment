@@ -1,0 +1,9 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__ZNF571,100,50,1.0,0.03999999910593033,-0.17,0.19,True,1.0,unimodal,0.71,True
+TPM__SNORA3B,100,50,1.0,0.0,-0.01,0.19,True,1.0,unimodal,0.71,True
+METH__IRF2,98,48,0.98,0.019999999552965164,0.08,0.2,True,1.0,unimodal,0.71,True
+TPM__NPEPPSP2,97,47,0.97,0.0,0.01,0.2,True,0.992,unimodal,0.71,True
+TPM__SNORA20,97,47,0.97,0.0,-0.03,0.18,True,0.992,unimodal,0.71,True
+METH__BAT5,94,44,0.94,0.009999999776482582,0.09,0.19,True,0.181,unimodal,0.71,True
+CNV__PCDH17,92,42,0.92,0.009999999776482582,-0.09,0.19,False,0.013,worst_case,0.8942505133470227,True
+TPM__SNORA29,91,41,0.91,0.0,0.04,0.19,False,0.002,worst_case,0.8942505133470227,True

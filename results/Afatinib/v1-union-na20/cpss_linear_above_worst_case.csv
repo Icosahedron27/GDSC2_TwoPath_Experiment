@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BNC2,91,41,0.91,0.05000000074505806,0.25,0.08,False,0.002,worst_case,0.8929673119095816,True

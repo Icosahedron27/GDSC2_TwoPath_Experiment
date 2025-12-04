@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__MTAP,98,48,0.98,0.17000000178813934,-0.4,0.14,True,1.0,unimodal,0.71,True
+TPM__SNX24,96,46,0.96,0.20000000298023224,0.37,0.11,True,0.832,unimodal,0.71,True
+TPM__MRPS18AP1,95,45,0.95,0.1899999976158142,-0.4,0.1,True,0.458,unimodal,0.71,True
+TPM__APLP2,93,43,0.93,0.17000000178813934,0.39,0.1,True,0.053,unimodal,0.71,True

@@ -1,0 +1,3 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__TNFAIP8,100,50,1.0,0.10000000149011612,-0.32,0.04,True,1.0,unimodal,0.71,True
+TPM__BCL2L1,100,50,1.0,0.10000000149011612,0.32,0.09,True,1.0,unimodal,0.71,True

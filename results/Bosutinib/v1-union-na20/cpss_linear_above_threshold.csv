@@ -1,0 +1,8 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__TNFAIP8,100,50,1.0,0.18000000715255737,-0.4,0.15,True,1.0,unimodal,0.71,True
+TPM__PDZD11,97,47,0.97,0.18000000715255737,0.42,0.13,True,0.992,unimodal,0.71,True
+METH__FAT1,92,42,0.92,0.15000000596046448,-0.25,0.21,False,0.013,worst_case,0.8921997989390829,True
+TPM__MLPH,92,42,0.92,0.14000000059604645,0.39,0.11,False,0.013,worst_case,0.8921997989390829,True
+TPM__LURAP1L,91,41,0.91,0.14000000059604645,0.38,0.15,False,0.002,worst_case,0.8921997989390829,True
+TPM__TRG-AS1,91,41,0.91,0.23000000417232513,-0.32,0.2,False,0.002,worst_case,0.8921997989390829,True
+TPM__SOX9,90,40,0.9,0.14000000059604645,0.37,0.12,False,0.0,worst_case,0.8921997989390829,True

@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RPL10A,95,45,0.95,0.1899999976158142,-0.4,0.18,True,0.458,unimodal,0.71,True
+TPM__GPR39,95,45,0.95,0.2800000011920929,0.51,0.2,True,0.458,unimodal,0.71,True
+TPM__APLP2,92,42,0.92,0.1899999976158142,0.41,0.11,False,0.013,worst_case,0.8956121,True

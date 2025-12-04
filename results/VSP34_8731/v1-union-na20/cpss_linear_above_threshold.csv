@@ -1,0 +1,9 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__KIRREL3,98,48,0.98,0.09000000357627869,0.28,0.09,True,1.0,unimodal,0.7,True
+TPM__STK32A,98,48,0.98,0.07000000029802322,0.26,0.13,True,1.0,unimodal,0.7,True
+TPM__ADA,97,47,0.97,0.05999999865889549,-0.23,0.02,True,0.992,unimodal,0.7,True
+TPM__CAPRIN2,96,46,0.96,0.07000000029802322,0.24,0.06,True,0.832,unimodal,0.7,True
+TPM__ABT1,95,45,0.95,0.05999999865889549,-0.23,0.02,True,0.458,unimodal,0.7,True
+TPM__BCL2L1,93,43,0.93,0.07000000029802322,0.22,0.08,True,0.053,unimodal,0.7,True
+TPM__OSER1,92,42,0.92,0.07000000029802322,0.22,0.08,False,0.013,worst_case,0.886979278002699,True
+TPM__SH3BP1,91,41,0.91,0.05999999865889549,-0.3,0.08,False,0.002,worst_case,0.886979278002699,True

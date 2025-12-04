@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__METRN,97,47,0.97,0.17000000178813934,0.38,0.13,True,0.992,unimodal,0.71,True
+TPM__PDCD6IP-DT,96,46,0.96,0.20000000298023224,0.46,0.16,True,0.832,unimodal,0.71,True
+TPM__SHANK1,94,44,0.94,0.1599999964237213,-0.24,0.18,True,0.181,unimodal,0.71,True

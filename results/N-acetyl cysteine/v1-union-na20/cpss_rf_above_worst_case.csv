@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__IQCB1,99,49,0.99,0.019999999552965164,0.12,0.24,True,1.0,unimodal,0.71,True
+METH__SPAG9,99,49,0.99,0.05000000074505806,-0.15,0.22,True,1.0,unimodal,0.71,True
+METH__HDAC2,92,42,0.92,0.029999999329447746,-0.16,0.24,False,0.013,worst_case,0.8930133898979187,True
+METH__PPAPDC1B,91,41,0.91,0.019999999552965164,-0.18,0.22,False,0.002,worst_case,0.8930133898979187,True

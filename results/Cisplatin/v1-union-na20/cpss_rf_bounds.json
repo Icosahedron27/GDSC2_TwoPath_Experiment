@@ -6,7 +6,7 @@
   "d": 410,
   "l": 20,
   "B": 50,
-  "n_features_worst_case": 36,
-  "n_features_unimodal": 55,
-  "n_features_above_threshold": 36
+  "n_features_worst_case": 56,
+  "n_features_unimodal": 64,
+  "n_features_above_threshold": 56
 }

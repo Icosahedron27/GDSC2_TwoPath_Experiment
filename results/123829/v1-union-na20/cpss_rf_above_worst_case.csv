@@ -1,0 +1,8 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SH3TC1,100,50,1.0,0.0,0.04,0.15,True,1.0,unimodal,0.7,True
+TPM__MGST1,100,50,1.0,0.1599999964237213,-0.35,0.2,True,1.0,unimodal,0.7,True
+TPM__RNVU1-31,100,50,1.0,0.019999999552965164,-0.15,0.16,True,1.0,unimodal,0.7,True
+TPM__IL2RG,100,50,1.0,0.0,-0.11,0.15,True,1.0,unimodal,0.7,True
+METH__MPI,99,49,0.99,0.019999999552965164,0.1,0.15,True,1.0,unimodal,0.7,True
+TPM__SNORA22,91,41,0.91,0.0,-0.03,0.16,False,0.002,worst_case,0.8897435897435897,True
+TPM__RNVU1-26,90,40,0.9,0.009999999776482582,-0.07,0.17,False,0.0,worst_case,0.8897435897435897,True

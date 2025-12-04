@@ -1,12 +1,12 @@
 {
-  "worst_case_bound": 0.8905366402439024,
-  "unimodal_bound": 0.71,
-  "theta": 0.19519512195121952,
-  "q_hat": 80.03,
+  "worst_case_bound": 0.8858660060975609,
+  "unimodal_bound": 0.7,
+  "theta": 0.19402439024390244,
+  "q_hat": 79.55,
   "d": 410,
   "l": 20,
   "B": 50,
-  "n_features_worst_case": 7,
-  "n_features_unimodal": 20,
-  "n_features_above_threshold": 7
+  "n_features_worst_case": 8,
+  "n_features_unimodal": 19,
+  "n_features_above_threshold": 8
 }

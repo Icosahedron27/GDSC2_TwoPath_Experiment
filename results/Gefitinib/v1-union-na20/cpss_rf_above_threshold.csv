@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__KDELR2,100,50,1.0,0.05000000074505806,0.18,0.18,True,1.0,unimodal,0.71,True
+TPM__BNC1,100,50,1.0,0.029999999329447746,-0.03,0.21,True,1.0,unimodal,0.71,True
+TPM__IFNWP19,100,50,1.0,0.0,0.04,0.18,True,1.0,unimodal,0.71,True
+CNV__FOXP1,92,42,0.92,0.019999999552965164,0.14,0.21,False,0.013,worst_case,0.8918367346938776,True

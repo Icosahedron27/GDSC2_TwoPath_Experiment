@@ -1,0 +1,11 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+MUT__PTEN,100,50,1.0,0.03999999910593033,-0.24,0.2,True,1.0,unimodal,0.71,True
+METH__THAP10,100,50,1.0,0.07000000029802322,-0.2,0.19,True,1.0,unimodal,0.71,True
+TPM__RPS28P5,97,47,0.97,0.0,-0.02,0.19,True,0.992,unimodal,0.71,True
+CNV__SPOP,96,46,0.96,0.029999999329447746,0.22,0.21,True,0.832,unimodal,0.71,True
+METH__C7orf70,94,44,0.94,0.03999999910593033,0.1,0.2,True,0.181,unimodal,0.71,True
+METH__KLF4,94,44,0.94,0.05000000074505806,-0.14,0.2,True,0.181,unimodal,0.71,True
+METH__ZKSCAN5,93,43,0.93,0.03999999910593033,-0.19,0.23,True,0.053,unimodal,0.71,True
+METH__GPR108,92,42,0.92,0.009999999776482582,0.15,0.21,False,0.013,worst_case,0.8918367346938776,True
+CNV__PTEN,92,42,0.92,0.03999999910593033,0.17,0.2,False,0.013,worst_case,0.8918367346938776,True
+CNV__MAML2,91,41,0.91,0.019999999552965164,0.17,0.23,False,0.002,worst_case,0.8918367346938776,True

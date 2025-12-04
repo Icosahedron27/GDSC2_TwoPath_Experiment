@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SLC38A5,100,50,1.0,0.1599999964237213,-0.36,0.11,True,1.0,unimodal,0.71,True
+TPM__CTSA,95,45,0.95,0.20000000298023224,0.43,0.16,True,0.458,unimodal,0.71,True
+TPM__GPAT3,92,42,0.92,0.1899999976158142,0.44,0.14,False,0.013,worst_case,0.8951736131934034,True

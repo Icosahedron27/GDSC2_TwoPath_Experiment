@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2,100,50,1.0,0.30000001192092896,-0.42,0.2,True,1.0,unimodal,0.71,True
+TPM__SMIM24,97,47,0.97,0.1599999964237213,-0.3,0.08,True,0.992,unimodal,0.71,True
+METH__DIABLO,93,43,0.93,0.1599999964237213,0.28,0.12,True,0.053,unimodal,0.71,True
+TPM__HAUS1,92,42,0.92,0.17000000178813934,-0.38,0.12,False,0.013,worst_case,0.8975545496632997,True
+TPM__LPP,91,41,0.91,0.14000000059604645,0.34,0.12,False,0.002,worst_case,0.8975545496632997,True

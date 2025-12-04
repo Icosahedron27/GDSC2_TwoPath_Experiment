@@ -1,0 +1,9 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RNVU1-7,100,50,1.0,0.009999999776482582,-0.08,0.17,True,1.0,unimodal,0.71,True
+MUT__PIK3CA,100,50,1.0,0.05999999865889549,-0.24,0.22,True,1.0,unimodal,0.71,True
+TPM__ATP5F1EP2,97,47,0.97,0.0,0.07,0.17,True,0.992,unimodal,0.71,True
+TPM__SNORA71C,93,43,0.93,0.0,-0.05,0.21,True,0.053,unimodal,0.71,True
+METH__MOBKL1A,93,43,0.93,0.0,-0.16,0.16,True,0.053,unimodal,0.71,True
+TPM__SCARNA4,91,41,0.91,0.009999999776482582,-0.1,0.22,False,0.002,worst_case,0.8960016835016835,True
+TPM__SNORA7B,91,42,0.91,0.0,-0.02,0.18,False,0.013,worst_case,0.8960016835016835,True
+CNV__H3C2,90,40,0.9,0.009999999776482582,0.13,0.16,False,0.0,worst_case,0.8960016835016835,True

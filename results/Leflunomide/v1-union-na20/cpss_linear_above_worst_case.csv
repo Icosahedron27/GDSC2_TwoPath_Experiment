@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__GSN,99,49,0.99,0.20999999344348907,0.44,0.16,True,1.0,unimodal,0.71,True
+TPM__PDCD6IP-DT,94,44,0.94,0.18000000715255737,0.45,0.19,True,0.181,unimodal,0.71,True
+METH__RHEB,91,41,0.91,0.20999999344348907,-0.44,0.2,False,0.002,worst_case,0.8972416791604197,True

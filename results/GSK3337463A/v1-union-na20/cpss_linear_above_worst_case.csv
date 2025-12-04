@@ -1,0 +1,3 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,98,48,0.98,0.18000000715255737,0.42,0.11,True,1.0,unimodal,0.7,True
+METH__MGAT1,94,44,0.94,0.2199999988079071,0.42,0.17,True,0.181,unimodal,0.7,True

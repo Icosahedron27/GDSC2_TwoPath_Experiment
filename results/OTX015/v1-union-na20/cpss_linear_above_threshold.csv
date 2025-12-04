@@ -1,0 +1,3 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__MCM6,98,48,0.98,0.10999999940395355,0.33,0.11,True,1.0,unimodal,0.71,True
+TPM__ERBB2,95,45,0.95,0.14000000059604645,0.34,0.12,True,0.458,unimodal,0.71,True

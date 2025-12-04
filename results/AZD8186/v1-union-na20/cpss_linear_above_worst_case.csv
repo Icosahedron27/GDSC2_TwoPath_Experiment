@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SGSM3,100,50,1.0,0.03999999910593033,-0.17,0.06,True,1.0,unimodal,0.7,True
+TPM__RNASEL,98,48,0.98,0.029999999329447746,-0.17,0.0,True,1.0,unimodal,0.7,True
+TPM__ACTB,92,42,0.92,0.029999999329447746,-0.18,0.0,False,0.013,worst_case,0.8875221471088435,True

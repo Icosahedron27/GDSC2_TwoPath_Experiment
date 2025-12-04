@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SLC7A11,100,50,1.0,0.1599999964237213,0.4,0.08,True,1.0,unimodal,0.71,True
+TPM__KRT8P3,91,41,0.91,0.14000000059604645,0.42,0.12,False,0.002,worst_case,0.8981049662668665,True
+TPM__EAF2,91,41,0.91,0.14000000059604645,-0.32,0.12,False,0.002,worst_case,0.8981049662668665,True

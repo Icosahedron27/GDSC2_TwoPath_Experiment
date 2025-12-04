@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__ABHD12,94,44,0.94,0.18000000715255737,0.42,0.19,True,0.181,unimodal,0.7,True
+TPM__BCL2L1,92,42,0.92,0.14000000059604645,0.38,0.09,False,0.013,worst_case,0.8892309379217274,True
+METH__MGAT1,89,39,0.89,0.18000000715255737,0.37,0.15,False,0.0,worst_case,0.8892309379217274,True

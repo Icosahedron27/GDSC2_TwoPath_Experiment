@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,99,49,0.99,0.14000000059604645,0.36,0.09,True,1.0,unimodal,0.71,True
+TPM__WFS1,93,43,0.93,0.1599999964237213,0.37,0.15,True,0.053,unimodal,0.71,True
+METH__PARP10,92,42,0.92,0.1599999964237213,0.4,0.12,False,0.013,worst_case,0.8943526484480433,True

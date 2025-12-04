@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__LBR,99,49,0.99,0.12999999523162842,0.29,0.11,True,1.0,unimodal,0.71,True
+TPM__TMEM9B,99,49,0.99,0.11999999731779099,0.37,0.08,True,1.0,unimodal,0.71,True
+METH__SHISA4,95,45,0.95,0.12999999523162842,-0.35,0.04,True,0.458,unimodal,0.71,True
+TPM__GMIP,90,40,0.9,0.15000000596046448,-0.34,0.09,False,0.0,worst_case,0.8939110137195123,True

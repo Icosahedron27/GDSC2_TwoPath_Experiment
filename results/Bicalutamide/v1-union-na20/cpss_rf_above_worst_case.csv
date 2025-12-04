@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__LMNA,92,42,0.92,0.2199999988079071,0.43,0.25,False,0.013,worst_case,0.8747002398081535,True

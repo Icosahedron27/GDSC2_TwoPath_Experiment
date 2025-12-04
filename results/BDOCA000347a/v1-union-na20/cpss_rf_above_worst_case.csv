@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__ITGB1,100,50,1.0,0.009999999776482582,-0.14,0.28,True,1.0,unimodal,0.7,True
+METH__COPB2,98,48,0.98,0.029999999329447746,-0.17,0.28,True,1.0,unimodal,0.7,True
+METH__C7orf70,97,47,0.97,0.03999999910593033,0.1,0.29,True,0.992,unimodal,0.7,True
+METH__KIAA1328,93,43,0.93,0.05000000074505806,-0.15,0.31,True,0.053,unimodal,0.7,True

@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RASAL2-AS1,99,49,0.99,0.18000000715255737,0.43,0.16,True,1.0,unimodal,0.71,True
+TPM__POLR1H,95,45,0.95,0.12999999523162842,-0.35,0.1,True,0.458,unimodal,0.71,True
+TPM__CTNNAL1,94,44,0.94,0.11999999731779099,0.32,0.09,True,0.181,unimodal,0.71,True
+TPM__CRYZL2P,91,41,0.91,0.11999999731779099,0.37,0.15,False,0.002,worst_case,0.8944758164642375,True

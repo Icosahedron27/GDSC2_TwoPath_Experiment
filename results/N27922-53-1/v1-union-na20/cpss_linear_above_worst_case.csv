@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__MGAT1,94,44,0.94,0.23999999463558197,0.42,0.16,True,0.181,unimodal,0.71,True
+TPM__DOCK1,93,43,0.93,0.18000000715255737,0.31,0.12,True,0.053,unimodal,0.71,True
+TPM__APLP2,92,42,0.92,0.23000000417232513,0.45,0.15,False,0.013,worst_case,0.8932379301745637,True
+TPM__PTTG1IP,91,41,0.91,0.2199999988079071,0.46,0.17,False,0.002,worst_case,0.8932379301745637,True

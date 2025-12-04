@@ -1,0 +1,7 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__LOC221710,100,50,1.0,0.05000000074505806,0.19,0.23,True,1.0,unimodal,0.7,True
+METH__SPAG9,100,50,1.0,0.07000000029802322,-0.29,0.21,True,1.0,unimodal,0.7,True
+METH__ITGB8,100,50,1.0,0.05999999865889549,-0.27,0.21,True,1.0,unimodal,0.7,True
+METH__TAX1BP3,98,48,0.98,0.05000000074505806,-0.2,0.23,True,1.0,unimodal,0.7,True
+CNV__CCND1,95,45,0.95,0.0,0.19,0.2,True,0.458,unimodal,0.7,True
+METH__DNAJC28,89,39,0.89,0.009999999776482582,-0.19,0.23,False,0.0,worst_case,0.8897435897435897,True

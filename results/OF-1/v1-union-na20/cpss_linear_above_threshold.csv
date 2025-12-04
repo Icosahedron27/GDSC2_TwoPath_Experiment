@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__FRAT2,97,47,0.97,0.09000000357627869,-0.3,0.1,True,0.992,unimodal,0.71,True
+METH__KDM3B,97,47,0.97,0.05999999865889549,0.24,0.05,True,0.992,unimodal,0.71,True
+TPM__PTPRB,92,42,0.92,0.05999999865889549,0.23,0.05,False,0.013,worst_case,0.8933684829460269,True

@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RNASEH2B,89,39,0.89,0.20999999344348907,-0.37,0.27,False,0.0,worst_case,0.8660576139088729,True

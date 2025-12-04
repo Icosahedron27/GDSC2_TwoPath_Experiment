@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__EFHD1,97,47,0.97,0.09000000357627869,0.3,0.04,True,0.992,unimodal,0.71,True
+TPM__ZFP36L2,97,47,0.97,0.07999999821186066,-0.29,0.03,True,0.992,unimodal,0.71,True
+TPM__TMC6,94,44,0.94,0.09000000357627869,-0.32,0.05,True,0.181,unimodal,0.71,True
+TPM__DUSP6,92,42,0.92,0.14000000059604645,-0.4,0.11,False,0.013,worst_case,0.8965431414807303,True

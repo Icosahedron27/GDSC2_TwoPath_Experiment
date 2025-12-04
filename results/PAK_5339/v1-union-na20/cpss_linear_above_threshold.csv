@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__ADA,99,49,0.99,0.11999999731779099,-0.32,0.12,True,1.0,unimodal,0.7,True
+TPM__TNFAIP8,98,48,0.98,0.11999999731779099,-0.34,0.11,True,1.0,unimodal,0.7,True
+TPM__PDZD11,90,40,0.9,0.12999999523162842,0.36,0.04,False,0.0,worst_case,0.8899233121363821,True

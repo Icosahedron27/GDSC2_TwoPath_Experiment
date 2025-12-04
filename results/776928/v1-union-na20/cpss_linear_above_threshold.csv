@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__ANXA4,98,48,0.98,0.18000000715255737,0.48,0.18,True,1.0,unimodal,0.7,True
+TPM__TGFBR2,95,45,0.95,0.09000000357627869,0.35,0.12,True,0.458,unimodal,0.7,True
+METH__GCET2,94,44,0.94,0.11999999731779099,0.38,0.13,True,0.181,unimodal,0.7,True

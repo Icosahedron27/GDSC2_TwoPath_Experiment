@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__GNPTG,98,48,0.98,0.11999999731779099,0.34,0.12,True,1.0,unimodal,0.7,True

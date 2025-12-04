@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__KRI1,95,45,0.95,0.23000000417232513,0.42,0.19,True,0.458,unimodal,0.71,True
+TPM__RFX5,92,42,0.92,0.17000000178813934,-0.39,0.14,False,0.013,worst_case,0.8974142616191905,True
+TPM__GPAT3,90,40,0.9,0.18000000715255737,0.43,0.19,False,0.0,worst_case,0.8974142616191905,True

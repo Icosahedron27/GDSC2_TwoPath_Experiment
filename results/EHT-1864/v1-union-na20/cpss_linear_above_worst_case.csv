@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__OXTR,95,45,0.95,0.07999999821186066,0.27,0.08,True,0.458,unimodal,0.71,True
+TPM__SLC2A1,95,45,0.95,0.10000000149011612,0.31,0.09,True,0.458,unimodal,0.71,True
+METH__SRRM2,94,44,0.94,0.12999999523162842,0.36,0.13,True,0.181,unimodal,0.71,True
+TPM__RIOK1,92,42,0.92,0.09000000357627869,-0.31,0.08,False,0.013,worst_case,0.8925020661512029,True

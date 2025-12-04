@@ -1,0 +1,3 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__PYGB,96,46,0.96,0.10999999940395355,0.32,0.12,True,0.832,unimodal,0.71,True
+TPM__SLC38A5,93,43,0.93,0.12999999523162842,-0.34,0.08,True,0.053,unimodal,0.71,True

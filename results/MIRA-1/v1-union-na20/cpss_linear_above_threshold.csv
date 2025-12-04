@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__KRI1,97,47,0.97,0.30000001192092896,0.46,0.21,True,0.992,unimodal,0.71,True
+TPM__APLP2,95,45,0.95,0.23000000417232513,0.46,0.15,True,0.458,unimodal,0.71,True
+TPM__SDSL,94,44,0.94,0.2199999988079071,0.42,0.17,True,0.181,unimodal,0.71,True
+TPM__GFI1,93,43,0.93,0.25999999046325684,-0.39,0.15,True,0.053,unimodal,0.71,True

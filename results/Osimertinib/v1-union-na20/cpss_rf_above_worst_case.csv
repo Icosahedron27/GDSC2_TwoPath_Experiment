@@ -1,0 +1,12 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+CNV__ERBB2,100,50,1.0,0.07000000029802322,-0.01,0.19,True,1.0,unimodal,0.71,True
+TPM__IFNWP19,100,50,1.0,0.0,0.1,0.19,True,1.0,unimodal,0.71,True
+CNV__CCND1,99,49,0.99,0.009999999776482582,-0.0,0.18,True,1.0,unimodal,0.71,True
+CNV__IKZF3,99,49,0.99,0.07000000029802322,0.0,0.19,True,1.0,unimodal,0.71,True
+MUT__KRAS,98,48,0.98,0.029999999329447746,0.17,0.19,True,1.0,unimodal,0.71,True
+CNV__MITF,93,43,0.93,0.019999999552965164,0.15,0.21,True,0.053,unimodal,0.71,True
+CNV__TRIP11,93,44,0.93,0.0,0.05,0.2,True,0.181,unimodal,0.71,True
+CNV__DIS3,93,43,0.93,0.009999999776482582,-0.05,0.2,True,0.053,unimodal,0.71,True
+MUT__BRAF,93,43,0.93,0.009999999776482582,0.19,0.22,True,0.053,unimodal,0.71,True
+CNV__ETV1,92,43,0.92,0.0,0.05,0.2,True,0.053,unimodal,0.71,True
+TPM__SNORA29,90,40,0.9,0.0,0.01,0.17,False,0.0,worst_case,0.8918367346938776,True

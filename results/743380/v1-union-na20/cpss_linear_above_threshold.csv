@@ -1,0 +1,2 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SULT1A1,100,50,1.0,0.23000000417232513,-0.41,0.2,True,1.0,unimodal,0.7,True

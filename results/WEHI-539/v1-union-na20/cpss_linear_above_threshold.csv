@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__PMAIP1,100,50,1.0,0.07999999821186066,-0.28,0.13,True,1.0,unimodal,0.71,True
+TPM__ZBED10P,98,48,0.98,0.07000000029802322,-0.28,0.09,True,1.0,unimodal,0.71,True
+TPM__ALDH3A2,97,47,0.97,0.09000000357627869,0.26,0.06,True,0.992,unimodal,0.71,True
+TPM__JARID2,97,47,0.97,0.09000000357627869,-0.27,0.09,True,0.992,unimodal,0.71,True

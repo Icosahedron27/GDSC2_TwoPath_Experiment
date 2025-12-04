@@ -1,0 +1,9 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RNVU1-25,98,48,0.98,0.0,0.04,0.17,True,1.0,unimodal,0.7,True
+METH__ARHGEF10,97,47,0.97,0.019999999552965164,-0.06,0.19,True,0.992,unimodal,0.7,True
+CNV__TCIRG1,96,46,0.96,0.009999999776482582,0.16,0.18,True,0.832,unimodal,0.7,True
+CNV__SDHA,94,44,0.94,0.009999999776482582,0.08,0.17,True,0.181,unimodal,0.7,True
+CNV__NUMA1,91,41,0.91,0.0,0.14,0.17,False,0.002,worst_case,0.8897435897435897,True
+CNV__BCL2,90,40,0.9,0.0,-0.04,0.17,False,0.0,worst_case,0.8897435897435897,True
+CNV__DCC,90,40,0.9,0.0,-0.03,0.19,False,0.0,worst_case,0.8897435897435897,True
+CNV__TCF4,89,39,0.89,0.0,-0.03,0.19,False,0.0,worst_case,0.8897435897435897,True

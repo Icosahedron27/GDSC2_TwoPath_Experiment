@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,100,50,1.0,0.15000000596046448,0.38,0.17,True,1.0,unimodal,0.71,True
+TPM__CTSA,93,43,0.93,0.17000000178813934,0.41,0.07,True,0.053,unimodal,0.71,True
+TPM__KIF21B,91,41,0.91,0.18000000715255737,-0.39,0.13,False,0.002,worst_case,0.8947325788751714,True

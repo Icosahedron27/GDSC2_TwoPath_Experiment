@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SINHCAF,100,50,1.0,0.15000000596046448,-0.4,0.08,True,1.0,unimodal,0.71,True
+TPM__CAMK2N1,93,43,0.93,0.15000000596046448,0.41,0.16,True,0.053,unimodal,0.71,True
+TPM__PDZD11,91,41,0.91,0.14000000059604645,0.43,0.1,False,0.002,worst_case,0.8948594107744108,True

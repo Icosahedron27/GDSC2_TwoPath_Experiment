@@ -1,0 +1,12 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__ZNF697,100,50,1.0,0.10000000149011612,-0.16,0.22,True,1.0,unimodal,0.71,True
+METH__C9orf150,100,50,1.0,0.09000000357627869,-0.2,0.23,True,1.0,unimodal,0.71,True
+METH__KDELC1,100,50,1.0,0.029999999329447746,-0.12,0.19,True,1.0,unimodal,0.71,True
+METH__LRTOMT,99,49,0.99,0.03999999910593033,-0.12,0.2,True,1.0,unimodal,0.71,True
+METH__EFNA5,99,49,0.99,0.05000000074505806,-0.21,0.2,True,1.0,unimodal,0.71,True
+METH__KCNRG,98,48,0.98,0.019999999552965164,0.15,0.2,True,1.0,unimodal,0.71,True
+TPM__MT1A,97,47,0.97,0.009999999776482582,0.1,0.19,True,0.992,unimodal,0.71,True
+METH__ZMYM6,93,43,0.93,0.019999999552965164,-0.17,0.19,True,0.053,unimodal,0.71,True
+METH__CEBPG,93,43,0.93,0.009999999776482582,0.05,0.2,True,0.053,unimodal,0.71,True
+METH__ZNF74,93,43,0.93,0.03999999910593033,-0.1,0.21,True,0.053,unimodal,0.71,True
+METH__SKI,91,41,0.91,0.05000000074505806,-0.15,0.2,False,0.002,worst_case,0.896551724137931,True

@@ -1,0 +1,6 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__RNU2-27P,92,43,0.92,0.0,-0.02,0.2,True,0.053,unimodal,0.71,True
+CNV__MLLT3,91,41,0.91,0.0,-0.0,0.17,False,0.002,worst_case,0.8940058479532164,True
+CNV__CBL,91,41,0.91,0.029999999329447746,0.21,0.19,False,0.002,worst_case,0.8940058479532164,True
+TPM__SNORA2C,90,42,0.9,0.0,0.02,0.17,False,0.013,worst_case,0.8940058479532164,True
+CNV__FOXA1,90,40,0.9,0.009999999776482582,0.22,0.19,False,0.0,worst_case,0.8940058479532164,True

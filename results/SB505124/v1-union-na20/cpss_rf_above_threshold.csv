@@ -1,0 +1,5 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__CCN1,100,50,1.0,0.2199999988079071,0.46,0.19,True,1.0,unimodal,0.71,True
+TPM__CRIM1-DT,98,48,0.98,0.18000000715255737,0.39,0.17,True,1.0,unimodal,0.71,True
+METH__MT2A,96,46,0.96,0.20000000298023224,-0.42,0.25,True,0.832,unimodal,0.71,True
+METH__C21orf96,90,40,0.9,0.1899999976158142,0.45,0.21,False,0.0,worst_case,0.9,True

@@ -1,0 +1,10 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+METH__DSTN,100,50,1.0,0.05999999865889549,-0.25,0.2,True,1.0,unimodal,0.71,True
+METH__PTPN14,100,50,1.0,0.03999999910593033,-0.26,0.21,True,1.0,unimodal,0.71,True
+METH__ANXA11,98,48,0.98,0.029999999329447746,-0.25,0.21,True,1.0,unimodal,0.71,True
+METH__TCEANC,96,46,0.96,0.019999999552965164,-0.22,0.2,True,0.832,unimodal,0.71,True
+METH__EIF4E,96,46,0.96,0.03999999910593033,-0.19,0.2,True,0.832,unimodal,0.71,True
+METH__EEF2K,96,46,0.96,0.03999999910593033,-0.21,0.2,True,0.832,unimodal,0.71,True
+METH__SUOX,95,45,0.95,0.05000000074505806,-0.22,0.24,True,0.458,unimodal,0.71,True
+METH__C14orf147,94,44,0.94,0.05999999865889549,-0.17,0.23,True,0.181,unimodal,0.71,True
+CNV__AKT1,94,44,0.94,0.019999999552965164,0.22,0.21,True,0.181,unimodal,0.71,True

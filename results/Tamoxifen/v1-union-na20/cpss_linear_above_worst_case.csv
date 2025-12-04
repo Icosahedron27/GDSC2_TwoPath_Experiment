@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__BCL2L1,99,49,0.99,0.10999999940395355,0.33,0.13,True,1.0,unimodal,0.7,True
+TPM__HASPIN,96,46,0.96,0.10000000149011612,-0.3,0.02,True,0.832,unimodal,0.7,True
+TPM__TBC1D9,95,45,0.95,0.11999999731779099,0.32,0.04,True,0.458,unimodal,0.7,True

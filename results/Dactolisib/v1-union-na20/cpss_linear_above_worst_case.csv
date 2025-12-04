@@ -1,0 +1,7 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__WDR45B,97,47,0.97,0.05999999865889549,0.25,0.02,True,0.992,unimodal,0.71,True
+TPM__KRT23,96,46,0.96,0.05999999865889549,0.19,0.04,True,0.832,unimodal,0.71,True
+TPM__ACTG1P25,95,45,0.95,0.09000000357627869,0.31,0.07,True,0.458,unimodal,0.71,True
+TPM__EPHA10,93,43,0.93,0.09000000357627869,0.27,0.06,True,0.053,unimodal,0.71,True
+TPM__RGS11,93,43,0.93,0.05999999865889549,0.25,0.08,True,0.053,unimodal,0.71,True
+TPM__GTF2E2,92,42,0.92,0.07000000029802322,-0.25,0.03,False,0.013,worst_case,0.8913470918367347,True

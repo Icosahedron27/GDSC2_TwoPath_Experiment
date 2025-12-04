@@ -1,0 +1,12 @@
+{
+  "worst_case_bound": 0.8911455608718766,
+  "unimodal_bound": 0.71,
+  "theta": 0.19373737373737374,
+  "q_hat": 76.72,
+  "d": 396,
+  "l": 19,
+  "B": 50,
+  "n_features_worst_case": 3,
+  "n_features_unimodal": 10,
+  "n_features_above_threshold": 3
+}

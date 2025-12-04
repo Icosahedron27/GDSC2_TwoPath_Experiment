@@ -1,0 +1,4 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__SH3BP1,100,50,1.0,0.10000000149011612,-0.32,0.09,True,1.0,unimodal,0.71,True
+TPM__AKT1S1,92,42,0.92,0.07999999821186066,0.27,0.09,False,0.013,worst_case,0.8951651610479856,True
+METH__KRT18,90,40,0.9,0.07999999821186066,-0.27,0.07,False,0.0,worst_case,0.8951651610479856,True

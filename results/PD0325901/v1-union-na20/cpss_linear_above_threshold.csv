@@ -1,0 +1,10 @@
+feature,selection_count,pair_count,cpss_score,r2,spearman,mutual_info,unimodal,diptest_pvalue,threshold_type,threshold_value,above_threshold
+TPM__ZFP36L2,100,50,1.0,0.07999999821186066,-0.29,0.04,True,1.0,unimodal,0.7,True
+TPM__SPRY2,99,49,0.99,0.1599999964237213,-0.4,0.12,True,1.0,unimodal,0.7,True
+MUT__NRAS,98,48,0.98,0.07999999821186066,-0.24,0.26,True,1.0,unimodal,0.7,True
+TPM__CRYZL2P,93,43,0.93,0.09000000357627869,-0.3,0.05,True,0.053,unimodal,0.7,True
+TPM__LPCAT2,92,42,0.92,0.10999999940395355,-0.33,0.06,False,0.013,worst_case,0.889010925925926,True
+TPM__ASAP3,91,41,0.91,0.09000000357627869,0.29,0.09,False,0.002,worst_case,0.889010925925926,True
+TPM__RGS9,90,40,0.9,0.07999999821186066,0.26,0.07,False,0.0,worst_case,0.889010925925926,True
+TPM__EGR3,89,39,0.89,0.07999999821186066,-0.18,0.07,False,0.0,worst_case,0.889010925925926,True
+TPM__SPRY4-AS1,89,39,0.89,0.10000000149011612,-0.31,0.12,False,0.0,worst_case,0.889010925925926,True
