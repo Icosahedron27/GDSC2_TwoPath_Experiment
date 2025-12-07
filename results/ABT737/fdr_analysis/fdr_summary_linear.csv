@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+ABT737,linear,6,3.9,0.65,3.9,1.5459624833740306,1,7,20,50

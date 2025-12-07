@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+AZD6738,rf,18,3.3,0.18333333333333332,3.3,1.9519221295943134,1,7,20,50

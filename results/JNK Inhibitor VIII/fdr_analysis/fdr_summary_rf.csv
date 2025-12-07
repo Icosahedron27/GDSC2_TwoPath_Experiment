@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+JNK Inhibitor VIII,rf,17,2.05,0.12058823529411763,2.05,1.6874537030686205,0,7,20,50

@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Gemcitabine,linear,9,4.05,0.44999999999999996,4.05,2.15580611373101,1,8,20,50

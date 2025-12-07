@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+OTX015,linear,2,3.05,1.525,3.05,1.909842925478428,0,7,20,50

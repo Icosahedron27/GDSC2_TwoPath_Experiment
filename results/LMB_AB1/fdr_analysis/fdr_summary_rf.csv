@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+LMB_AB1,rf,46,2.55,0.05543478260869565,2.55,1.3955285736952863,0,5,20,50

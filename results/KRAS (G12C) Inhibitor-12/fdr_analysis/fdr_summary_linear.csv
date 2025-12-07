@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+KRAS (G12C) Inhibitor-12,linear,4,3.25,0.8125,3.25,2.1880356487041066,0,7,20,50

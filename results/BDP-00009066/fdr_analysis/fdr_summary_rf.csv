@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+BDP-00009066,rf,16,3.0,0.1875,3.0,1.7888543819998317,0,6,20,50

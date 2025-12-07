@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+OTX015,rf,41,7.35,0.17926829268292682,7.35,2.393219588754864,4,12,20,50

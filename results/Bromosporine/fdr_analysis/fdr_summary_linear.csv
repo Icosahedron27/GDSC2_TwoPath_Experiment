@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Bromosporine,linear,1,2.7,2.7,2.7,1.7349351572897473,0,6,20,50

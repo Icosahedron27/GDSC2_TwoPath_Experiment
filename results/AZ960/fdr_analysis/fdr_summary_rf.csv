@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+AZ960,rf,38,9.45,0.24868421052631576,9.45,2.2242976419535223,6,15,20,50

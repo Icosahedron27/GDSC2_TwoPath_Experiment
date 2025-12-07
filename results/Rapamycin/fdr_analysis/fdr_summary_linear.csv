@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Rapamycin,linear,4,4.15,1.0375,4.15,2.1277922830953213,1,10,20,50

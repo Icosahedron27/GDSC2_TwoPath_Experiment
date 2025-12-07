@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Fludarabine,linear,4,3.0,0.75,3.0,1.9493588689617927,0,6,20,50

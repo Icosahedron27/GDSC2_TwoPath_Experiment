@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+N-acetyl cysteine,rf,4,2.25,0.5625,2.25,2.2107690969434146,0,9,20,50

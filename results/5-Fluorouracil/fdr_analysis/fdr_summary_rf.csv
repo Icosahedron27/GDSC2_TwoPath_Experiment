@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+5-Fluorouracil,rf,18,6.3,0.35,6.3,2.9512709126747407,1,14,20,50

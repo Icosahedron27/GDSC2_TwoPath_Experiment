@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+XAV939,rf,8,1.8,0.225,1.8,2.181742422927143,0,10,20,50

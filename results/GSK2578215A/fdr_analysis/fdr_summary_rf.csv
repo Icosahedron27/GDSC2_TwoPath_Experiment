@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+GSK2578215A,rf,15,2.15,0.14333333333333334,2.15,1.878163997099295,0,8,20,50

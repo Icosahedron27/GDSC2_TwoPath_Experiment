@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+OSI-027,rf,6,4.65,0.775,4.65,2.971110903349116,0,13,20,50

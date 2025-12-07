@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+GSK2276186C,linear,4,2.3,0.575,2.3,1.8466185312619385,0,6,20,50

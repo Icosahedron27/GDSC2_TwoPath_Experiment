@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+PBD-288,rf,35,5.9,0.1685714285714286,5.9,2.6814175355583845,0,13,20,50

@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Dactinomycin,linear,6,3.9,0.65,3.9,2.4474476501040834,0,8,20,50

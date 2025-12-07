@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+BDILV000379a,rf,27,2.95,0.10925925925925926,2.95,1.8296174463531987,1,6,20,50

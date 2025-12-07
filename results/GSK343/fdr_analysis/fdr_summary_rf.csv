@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+GSK343,rf,30,2.1,0.07,2.1,2.071231517720798,0,7,20,50

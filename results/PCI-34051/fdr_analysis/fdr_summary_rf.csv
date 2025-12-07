@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+PCI-34051,rf,43,5.2,0.12093023255813953,5.2,2.9086079144497976,0,13,20,50

@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+BI-2536,rf,31,10.35,0.3338709677419355,10.35,3.4099120223255026,4,16,20,50

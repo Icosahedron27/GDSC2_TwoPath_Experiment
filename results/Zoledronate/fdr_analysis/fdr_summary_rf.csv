@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Zoledronate,rf,44,1.45,0.03295454545454545,1.45,1.2031209415515964,0,4,20,50

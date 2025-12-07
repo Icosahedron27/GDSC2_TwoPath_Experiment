@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Afatinib,rf,13,2.0,0.15384615384615385,2.0,1.2649110640673518,0,5,20,50

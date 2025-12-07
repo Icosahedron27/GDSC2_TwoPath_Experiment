@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Remodelin,linear,1,0.6,0.6,0.6,0.9165151389911679,0,4,20,50

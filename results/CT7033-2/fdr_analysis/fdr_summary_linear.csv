@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+CT7033-2,linear,2,2.75,1.375,2.75,1.7284386017443605,0,6,20,50

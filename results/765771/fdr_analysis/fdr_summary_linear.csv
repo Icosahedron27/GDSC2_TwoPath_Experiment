@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+765771,linear,5,2.9,0.58,2.9,2.0952326839756963,0,9,20,50

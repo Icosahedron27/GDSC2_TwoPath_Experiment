@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+WEHI-539,rf,17,3.5,0.20588235294117646,3.5,1.9874606914351791,1,7,20,50

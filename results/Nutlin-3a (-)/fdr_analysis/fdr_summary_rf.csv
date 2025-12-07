@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Nutlin-3a (-),rf,33,3.85,0.11666666666666667,3.85,1.851350858157362,1,9,20,50

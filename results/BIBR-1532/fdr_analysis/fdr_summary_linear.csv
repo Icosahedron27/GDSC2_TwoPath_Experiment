@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+BIBR-1532,linear,1,3.4,3.4,3.4,2.083266665599966,0,7,20,50

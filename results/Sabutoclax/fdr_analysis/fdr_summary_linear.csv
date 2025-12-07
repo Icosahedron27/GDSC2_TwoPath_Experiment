@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Sabutoclax,linear,3,3.5,1.1666666666666667,3.5,1.6881943016134133,0,6,20,50

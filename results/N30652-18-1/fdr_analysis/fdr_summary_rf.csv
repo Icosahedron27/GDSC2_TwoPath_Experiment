@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+N30652-18-1,rf,16,2.95,0.184375,2.95,1.5960889699512368,0,6,20,50

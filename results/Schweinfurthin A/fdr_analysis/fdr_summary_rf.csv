@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Schweinfurthin A,rf,13,8.9,0.6846153846153846,8.9,3.374907406137241,4,19,20,50

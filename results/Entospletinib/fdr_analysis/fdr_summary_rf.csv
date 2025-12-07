@@ -1,0 +1,2 @@
+drug,method,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Entospletinib,rf,11,4.3,0.3909090909090909,4.3,2.193171219946131,2,8,20,50
