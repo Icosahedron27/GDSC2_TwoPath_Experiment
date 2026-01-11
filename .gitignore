@@ -8,4 +8,5 @@ data/processed/
 scripts/__pycache__
 scripts/prep/__pycache__
 logs
-evaluation
+evaluation/further_analysis
+evaluation/Pathway_Analysis
