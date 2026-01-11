@@ -5,4 +5,6 @@ data/processed/
 *.numbers
 .snakemake/
 scripts/__pycache__
-src/bachelorarbeit/prep/__pycache__
+scripts/prep/__pycache__
+logs
+evaluation

@@ -11,7 +11,7 @@ import pandas as pd
 project_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(project_root))
 
-from src.bachelorarbeit.prep.artifacts import save_table, save_manifest, save_sidecars
+from scripts.prep.artifacts import save_table, save_manifest, save_sidecars
 
 BLOCK_PREFIX = {
     'tpm': 'TPM',

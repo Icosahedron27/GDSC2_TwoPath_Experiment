@@ -8,7 +8,7 @@ project_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(project_root))
 
 from scripts.io_min import load_tpm, load_cnv, load_mut, load_methyl, load_ic50
-from src.bachelorarbeit.prep.artifacts import save_block, save_table, save_manifest, save_sidecars
+from scripts.prep.artifacts import save_block, save_table, save_manifest, save_sidecars
 
 
 def main():
