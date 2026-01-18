@@ -1,0 +1,2 @@
+drug,method,matrix_type,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Dabrafenib,linear,full_matrix,15,10.2,0.6799999999999999,10.2,3.280243893371345,5,18,20,50

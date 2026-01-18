@@ -1,0 +1,2 @@
+drug,method,matrix_type,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+Nutlin-3a (-),linear,full_matrix,18,8.9,0.49444444444444446,8.9,2.6248809496813377,5,13,20,50

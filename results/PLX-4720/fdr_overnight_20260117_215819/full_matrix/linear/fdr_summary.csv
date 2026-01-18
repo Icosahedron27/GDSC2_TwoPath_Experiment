@@ -1,0 +1,2 @@
+drug,method,matrix_type,n_original,E0_V,fdr,null_mean,null_std,null_min,null_max,n_perms,B
+PLX-4720,linear,full_matrix,13,9.65,0.7423076923076923,9.65,2.372235232855292,5,15,20,50
